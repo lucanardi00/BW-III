@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 
 import Nav from "react-bootstrap/Nav";
@@ -8,13 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import MySearchBar from "./MySearchBar";
 import { Button, Dropdown, DropdownMenu, Image } from "react-bootstrap";
 import { fetchUserProfileAction } from "../redux/actions";
-import { NavLink } from "react-router-dom";
 
 function MyNavbar(props) {
   const dispatch = useDispatch();
   const me = useSelector((state) => state.getFetch.profile);
   console.log(me);
-  const [query, setQuery] = useState("");
+
   useEffect(() => {
     dispatch(fetchUserProfileAction(props.query));
   }, []);
