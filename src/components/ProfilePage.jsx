@@ -1,4 +1,10 @@
+import ProfilePresentation from "./ProfilePresentation";
+
 const ProfilePage = () => {
-  return <></>;
+  return (
+    <>
+      <ProfilePresentation />
+    </>
+  );
 };
 export default ProfilePage;

@@ -1,0 +1,49 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+.btn-rounded {
+
+    border-top-left-radius: 20px; 
+    border-bottom-left-radius: 20px; 
+    border-top-right-radius: 20px; 
+    border-bottom-right-radius: 20px; 
+    
+}
+.containerBackgroundImage{
+    min-height: 180px;
+    background-image: url("https://static.vecteezy.com/system/resources/thumbnails/006/709/644/small/abstract-modern-tech-of-programming-code-screen-developer-free-photo.jpg");
+}
+.containerProfilePresentation{
+    border-radius: 10px;
+    border: solid black 1px;
+    overflow: hidden;
+}
+.aTagProfilePre{
+    text-decoration: none;
+}
+.aTagProfilePre:hover{
+    text-decoration: underline;
+}
+.btn-roundedBlue{
+    background-color: #0a66c2;
+    border-color: #0a66c2;
+}
+.btn-roundedWhite{
+    background-color: white;
+    color: #398fe6;
+    border-color: #0a66c2;
+    font-weight: bold;
+}
+.btn-roundedGrey{
+    background-color: white;
+    color: grey;
+    border-color: gray;
+}
+a{
+    color:#0a66c2;
+    font-weight: bold;
+   
+
+}
+.bi-check-circle {
+    color:#2184e7; 
+    font-weight: bold;
+}
