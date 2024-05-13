@@ -3,6 +3,7 @@ import Experiences from "./Esperienze";
 import Studies from "./Formazione";
 import Profile from "./Informazioni";
 import Post from "./Post";
+import Projects from "./Progetti";
 import Risorse from "./Risorse";
 
 const ProfilePage = () => {
@@ -14,6 +15,7 @@ const ProfilePage = () => {
   <Post />
   <Experiences />
   <Studies />
+  <Projects />
   </>
 ) 
 };
