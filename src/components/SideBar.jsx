@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Row,
   Col,
@@ -7,12 +8,19 @@ import {
   Button,
   Image,
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserProfileAction } from "../redux/actions";
 
 const SideBar = () => {
   const ProfilesURL = "https://striveschool-api.herokuapp.com/api/profile";
   const myKey =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQxYzAxZTE2N2U1MzAwMTVmYTY5NzciLCJpYXQiOjE3MTU1ODUwNTUsImV4cCI6MTcxNjc5NDY1NX0.oMCLB4PAEReTiWGPS97aY6U0owrc4rQySh7kmp9695Y";
-
+const dispatch = useDispatch()
+const user = useSelector((state) => state.getFetch.profile)
+useEffect(() => {
+    dispatch(fetchUserProfileAction (user.id) )
+    console.log(user)
+} )
   return (
     <Container>
       <Row className="justify-content-center">
