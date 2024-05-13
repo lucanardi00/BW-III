@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchUserProfileAction } from "./redux/actions";
 import NavScrollExample from "./components/Searchbar";
+import SideBar from "./components/SideBar";
 
 function App() {
   const allProfile = useSelector ((state) => state.getFetch.profile);
@@ -17,6 +18,7 @@ function App() {
   return (
     <>
     <NavScrollExample />
+    <SideBar />
     </>
   );
 }
