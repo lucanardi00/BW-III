@@ -16,4 +16,4 @@ const getProfileFetchReducer = (state = initialState, action) => {
   }
 };
 
-export default getProfileFetchReducer
+export default getProfileFetchReducer;

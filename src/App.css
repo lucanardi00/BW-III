@@ -1,0 +1,27 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+.miniPic {
+  width: 30px;
+}
+
+i {
+  font-size: 20px;
+}
+
+#dropdown-basic {
+  background-color: transparent;
+  color: black;
+  border: none;
+}
+
+.premium {
+  text-decoration: underline;
+  color: #d59236;
+}
+
+.dropPic {
+  width: 48px;
+}
+h6 {
+  padding-inline: 16px;
+}
