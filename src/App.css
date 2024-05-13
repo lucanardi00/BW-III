@@ -25,3 +25,19 @@ i {
 h6 {
   padding-inline: 16px;
 }
+.cardheader{
+    background-color: transparent;
+    border-bottom: none;
+}
+
+.analisi, .risorse, .profile, .post {
+    margin-bottom: 10px;
+}
+
+.cardfooter {
+    background-color: transparent;
+}
+
+.cardfooter:hover {
+    background-color: #F3F3F3;
+}
