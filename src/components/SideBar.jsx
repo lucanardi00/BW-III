@@ -7,17 +7,28 @@ import {
   Button,
   Image,
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllProfileAction } from "../redux/actions";
+import { useEffect } from "react";
 
 const SideBar = () => {
   const ProfilesURL = "https://striveschool-api.herokuapp.com/api/profile";
   const myKey =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQxYzAxZTE2N2U1MzAwMTVmYTY5NzciLCJpYXQiOjE3MTU1ODUwNTUsImV4cCI6MTcxNjc5NDY1NX0.oMCLB4PAEReTiWGPS97aY6U0owrc4rQySh7kmp9695Y";
+  const dispatch = useDispatch();
+  const allProfileData = useSelector((state) =>
+    state.getFetch.allProfile.slice(0, 10)
+  );
 
+  useEffect(() => {
+    dispatch(fetchAllProfileAction());
+  }, []);
+  console.log("allprofile", allProfileData);
   return (
     <Col md={3}>
-      <Card>
+      <Card className="mb-2">
         <ListGroup>
-          <ListGroup.Item>
+          <ListGroup.Item className="p-3">
             <div className="d-flex justify-content-between">
               <span>Lingua del Profilo</span>
               <span>
@@ -32,10 +43,12 @@ const SideBar = () => {
                   <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
                 </svg>
               </span>
-              <p>Italiano</p>
+            </div>
+            <div>
+              <p className="mb-0">Italiano</p>
             </div>
           </ListGroup.Item>
-          <ListGroup.Item>
+          <ListGroup.Item className="p-3">
             <div className="d-flex justify-content-between">
               <span>Public Profile & URL</span>
               <span>
@@ -49,8 +62,12 @@ const SideBar = () => {
                 >
                   <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
                 </svg>
-                <p>www.linkedin.com/in/matteo-moscardini-1a7735304</p>
               </span>
+            </div>
+            <div>
+              <p className="mb-0">
+                www.linkedin.com/in/matteo-moscardini-1a7735304
+              </p>
             </div>
           </ListGroup.Item>
         </ListGroup>
@@ -74,30 +91,33 @@ const SideBar = () => {
           </ListGroup.Item>
         </ListGroup>
       </Card>
-      <Card>
-        <Card.Header>
-          <span>Persone che potresti conoscere</span>
-          <span>Dalla tua scuola o la tua università</span>
-        </Card.Header>
-        <ListGroup>
-          <ListGroup.Item>
-            <div className="d-flex flex-row justify-content-start align-items-baseline">
-              <span>
-                {" "}
-                <Image src={""} roundedCircle />
-              </span>
-              <div className="d-flex flex-column justify-content-end">
-                <div className="d-flex flex-row">
-                  <p></p>
-                  <div className="d-flex align-items-center justify-content-center mt-2 text-center">
-                    <Button>Collegati</Button>
-                  </div>
-                </div>
+      <div>
+        <Card>
+          <Card.Header className="bg-white color-black">
+            <h5 className="mb-0">Persone che potresti conoscere</h5>
+            <h5> dalla tua scuola o la tua università</h5>
+          </Card.Header>
+          {allProfileData.map((person, index) => (
+            <div key={index} className="d-lg-flex p-3 ">
+              <div>
+                <img
+                  src={person.image}
+                  alt={person.name}
+                  className="rounded-circle me-2"
+                  style={{ width: "45px", height: "45px" }}
+                />
+              </div>
+              <div>
+                <h5 className="m-0">{person.name}</h5>
+                <p className="m-0">{person.title}</p>
+                <Button className="d-flex align-items-center buttonColleg px-3 py-1 mt-1">
+                  <i className="bi bi-person-plus"></i>Collegati
+                </Button>
               </div>
             </div>
-          </ListGroup.Item>
-        </ListGroup>
-      </Card>
+          ))}
+        </Card>
+      </div>
     </Col>
   );
 };

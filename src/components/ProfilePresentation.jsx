@@ -48,7 +48,7 @@ const ProfilePresentation = () => {
   };
 
   return (
-    <div className=" containerProfilePresentation">
+    <div className=" containerProfilePresentation bg-white mb-2">
       <div className="containerBackgroundImage">
         <div
           className="position-relative"

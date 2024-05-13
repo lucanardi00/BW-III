@@ -1,12 +1,12 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import getProfileFetchReducer from '../reducers/getProfileFetchReducer'
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import getProfileFetchReducer from "../reducers/getProfileFetchReducer";
 
 const rootReducer = combineReducers({
-    getFetch: getProfileFetchReducer
-})
+  getFetch: getProfileFetchReducer,
+});
 
 const store = configureStore({
-    reducer: rootReducer
-})
+  reducer: rootReducer,
+});
 
-export default store
+export default store;

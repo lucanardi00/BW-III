@@ -1,7 +1,8 @@
-import { GET_PROFILE_ID } from "../actions";
+import { GET_ALL_PROFILE, GET_PROFILE_ID } from "../actions";
 
 const initialState = {
   profile: [],
+  allProfile: [],
 };
 
 const getProfileFetchReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const getProfileFetchReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: action.payload,
+      };
+    case GET_ALL_PROFILE:
+      return {
+        ...state,
+        allProfile: action.payload,
       };
     default:
       return state;
