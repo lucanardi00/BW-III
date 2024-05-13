@@ -58,7 +58,7 @@ const ProfilePresentation = () => {
             src={myProfile.image}
             alt="Immagine"
             className="rounded-circle position-absolute"
-            style={{ width: "150px", height: "150px" }}
+            style={{ width: "170px", height: "170px" }}
           />
         </div>
       </div>
