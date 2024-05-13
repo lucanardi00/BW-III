@@ -1,4 +1,4 @@
-import { Offcanvas } from "react-bootstrap";
+import { Card, Offcanvas } from "react-bootstrap";
 
 const MyOffcanvas = (props) => {
   return (
@@ -9,11 +9,58 @@ const MyOffcanvas = (props) => {
       placement="end"
     >
       <Offcanvas.Header closeButton>
-        <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+        <Offcanvas.Title>Per le aziende</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
-        Some text as placeholder. In real life you can have the elements you
-        have chosen. Like, text, images, lists, etc.
+        <Card>
+          <Card.Header>
+            <Card.Title>Special title treatment</Card.Title>
+          </Card.Header>
+          <Card.Body>
+            <Card.Text>
+              With supporting text below as a natural lead-in to additional
+              content.
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        <Card>
+          <Card.Header>
+            <Card.Title>Scopri altro per il businness</Card.Title>
+          </Card.Header>
+          <Card.Body>
+            <Card.Text>
+              <a href="#">
+                <h5>Assumi su Linkedin</h5>
+                <p>Trova, attrai, assumi</p>
+              </a>
+              <a href="#">
+                <h5>Vendi con Linkedin</h5>
+                <p>Sblocca nuove oppurtunità di vendita</p>
+              </a>
+              <a href="#">
+                <h5>Offerta di lavoro gratuita</h5>
+                <p>Ottieni rapidamente candidati qualificati</p>
+              </a>
+              <a href="#">
+                <h5>Fai pubblicità su Linkedin</h5>
+                <p>Acquisisci clienti e fai crescere la tua azienda</p>
+              </a>
+              <a href="#">
+                <h5>Impara con Linkedin</h5>
+                <p>Assumi su Linkedin</p>
+              </a>
+              <a href="#">
+                <h5>Centro amministrazione</h5>
+                <p>Gestisci i dettagli di fatturazione e account</p>
+              </a>
+            </Card.Text>
+          </Card.Body>
+          <Card.Header>
+            <a>
+              <h5>Crea una pagina aziendale +</h5>
+            </a>
+          </Card.Header>
+        </Card>
       </Offcanvas.Body>
     </Offcanvas>
   );
