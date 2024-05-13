@@ -3,7 +3,7 @@ import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchUserProfileAction } from "./redux/actions";
-import NavScrollExample from "./components/Searchbar";
+import MyNavbar from "./components/MyNavbar";
 import ProfilePage from "./components/ProfilePage";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-      <NavScrollExample />
+      <MyNavbar />
       <ProfilePage />
     </>
   );

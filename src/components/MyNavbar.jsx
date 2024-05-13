@@ -1,24 +1,26 @@
-import { useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { useDispatch } from 'react-redux';
+import { useState } from "react";
+import Container from "react-bootstrap/Container";
 
-function NavScrollExample() {
-    const [query, setQuery] = useState('me')
-    const dispatch = useDispatch()
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { useDispatch } from "react-redux";
+import MySearchBar from "./MySearchBar";
+
+function MyNavbar() {
+  const [query, setQuery] = useState("me");
+  const dispatch = useDispatch();
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
         <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+        <MySearchBar />
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
+            style={{ maxHeight: "100px" }}
             navbarScroll
           >
             <Nav.Link href="#action1">Home</Nav.Link>
@@ -37,18 +39,10 @@ function NavScrollExample() {
               Link
             </Nav.Link>
           </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-          </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
 
-export default NavScrollExample;
+export default MyNavbar;
