@@ -8,6 +8,7 @@ function App() {
   return (
     <>
       <MyNavbar query="me" />
+
       <ProfilePage />
     </>
   );

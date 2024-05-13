@@ -15,7 +15,7 @@ const ProfilePresentation = () => {
   console.log("mee", myProfile);
 
   return (
-    <div className="m-4 containerProfilePresentation">
+    <div className=" containerProfilePresentation">
       <div className="containerBackgroundImage">
         <div
           className="position-relative"
@@ -32,11 +32,11 @@ const ProfilePresentation = () => {
 
       <div className="p-4">
         <div className="d-flex flex-row-reverse">
-          <i class="bi bi-pen"></i>
+          <i className="bi bi-pen"></i>
         </div>
         <div className="d-flex align-items-center">
           <h1 className="m-0 me-2">{myProfile.name}</h1>
-          <i class="bi bi-check-circle"></i>
+          <i className="bi bi-check-circle"></i>
         </div>
         <p className="m-0">{myProfile.title}</p>
         <div className="d-flex">
