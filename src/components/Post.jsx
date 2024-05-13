@@ -7,7 +7,8 @@ function Post() {
   const name = "Luca Nardi";
   return (
     <Card className="risorse">
-      <Card.Header className="cardheader">
+      <Card.Header className="cardheader d-flex justify-content-between">
+      <div>
         <h5>Attività</h5>
         <li-icon aria-hidden="true" type="visibility" class="v-align-bottom text-secondary" size="small">
           <svg
@@ -26,6 +27,11 @@ function Post() {
         <a href="#">
           <h6 className="text-secondary fw-light d-inline"> ? follower</h6>
         </a>
+        </div>
+        <div>
+            <button className="me-2 rounded bg-transparent text-primary border-primary">Crea un Post</button>
+            <i class="bi bi-pencil"></i>
+        </div>
       </Card.Header>
       <Card.Body>
         <Row>

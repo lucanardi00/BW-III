@@ -13,7 +13,7 @@ export const fetchUserProfileAction = (query) => {
                 let data = await response.json();
                 console.log(data)
 
-                if (data.length > 0) {
+                if (data) {
                     dispatch({
                         type: GET_PROFILE_ID,
                         payload: data,

@@ -7,8 +7,14 @@ function Projects() {
   const name = "Luca Nardi";
   return (
     <Card className="risorse">
-      <Card.Header className="cardheader">
+      <Card.Header className="cardheader d-flex justify-content-between">
+        <div>
         <h5>Progetti</h5>
+        </div>
+        <div>
+        <i class="bi bi-plus-lg me-2"></i>
+        <i class="bi bi-pencil"></i>
+        </div>
       </Card.Header>
       <Card.Body>
         <Row>
