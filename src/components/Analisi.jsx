@@ -8,7 +8,12 @@ function Analisi() {
     <Card className="analisi">
       <Card.Header className="cardheader">
         <h5>Analisi</h5>
-        <li-icon aria-hidden="true" type="visibility" class="v-align-bottom text-secondary" size="small">
+        <li-icon
+          aria-hidden="true"
+          type="visibility"
+          class="v-align-bottom text-secondary"
+          size="small"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -28,51 +33,89 @@ function Analisi() {
         <Row>
           <Col xs={4}>
             <div>
-              <a href=""><h6 className="text-dark text-decoration-none">
-                <li-icon
-                  aria-hidden="true"
-                  type="people"
-                  class="ivm-view-attr__icon ivm-view-attr__icon--icon "
-                  size="large"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    data-supported-dps="24x24"
-                    fill="currentColor"
-                    class="mercado-match"
-                    width="24"
-                    height="24"
-                    focusable="false"
+              <a href="#">
+                <h6 className="text-dark text-decoration-none">
+                  <li-icon
+                    aria-hidden="true"
+                    type="people"
+                    class="ivm-view-attr__icon ivm-view-attr__icon--icon "
+                    size="large"
                   >
-                    <path d="M12 16v6H3v-6a3 3 0 013-3h3a3 3 0 013 3zm5.5-3A3.5 3.5 0 1014 9.5a3.5 3.5 0 003.5 3.5zm1 2h-2a2.5 2.5 0 00-2.5 2.5V22h7v-4.5a2.5 2.5 0 00-2.5-2.5zM7.5 2A4.5 4.5 0 1012 6.5 4.49 4.49 0 007.5 2z"></path>
-                  </svg>
-                </li-icon>
-                17 visualizzazioni del profilo
-              </h6></a>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      data-supported-dps="24x24"
+                      fill="currentColor"
+                      class="mercado-match"
+                      width="24"
+                      height="24"
+                      focusable="false"
+                    >
+                      <path d="M12 16v6H3v-6a3 3 0 013-3h3a3 3 0 013 3zm5.5-3A3.5 3.5 0 1014 9.5a3.5 3.5 0 003.5 3.5zm1 2h-2a2.5 2.5 0 00-2.5 2.5V22h7v-4.5a2.5 2.5 0 00-2.5-2.5zM7.5 2A4.5 4.5 0 1012 6.5 4.49 4.49 0 007.5 2z"></path>
+                    </svg>
+                  </li-icon>
+                  17 visualizzazioni del profilo
+                </h6>
+              </a>
               <p>Scopri chi ha visitato il tuo profilo.</p>
             </div>
           </Col>
           <Col xs={4} className="text-center">
             <div>
-              <a href=""><h6 className="text-dark text-decoration-none">
-              <li-icon aria-hidden="true" type="analytics" class="ivm-view-attr__icon ivm-view-attr__icon--icon  " size="large"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
-      <path d="M23 20v1H1v-1zM8 9H2v10h6zm7-6H9v16h6zm7 11h-6v5h6z"></path>
-    </svg></li-icon>
-                110 impressioni del post
-                </h6></a>
-                <p>Scopri chi sta interagendo con i tuoi post.</p>
+              <a href="">
+                <h6 className="text-dark text-decoration-none">
+                  <li-icon
+                    aria-hidden="true"
+                    type="analytics"
+                    class="ivm-view-attr__icon ivm-view-attr__icon--icon  "
+                    size="large"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      data-supported-dps="24x24"
+                      fill="currentColor"
+                      class="mercado-match"
+                      width="24"
+                      height="24"
+                      focusable="false"
+                    >
+                      <path d="M23 20v1H1v-1zM8 9H2v10h6zm7-6H9v16h6zm7 11h-6v5h6z"></path>
+                    </svg>
+                  </li-icon>
+                  110 impressioni del post
+                </h6>
+              </a>
+              <p>Scopri chi sta interagendo con i tuoi post.</p>
             </div>
           </Col>
           <Col xs={4} className="text-center">
             <div>
-              <a href=""><h6 className="text-dark text-decoration-none">
-              <li-icon aria-hidden="true" type="search" class="ivm-view-attr__icon ivm-view-attr__icon--icon  " size="large"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
-      <path d="M21.41 18.59l-5.27-5.28A6.83 6.83 0 0017 10a7 7 0 10-7 7 6.83 6.83 0 003.31-.86l5.28 5.27a2 2 0 002.82-2.82zM5 10a5 5 0 115 5 5 5 0 01-5-5z"></path>
-    </svg></li-icon>
-                7 comparsa nei motori di ricerca
-                </h6></a>
-                <p>Vedi quante volte compari nei risultati di ricerca.</p>
+              <a href="">
+                <h6 className="text-dark text-decoration-none">
+                  <li-icon
+                    aria-hidden="true"
+                    type="search"
+                    class="ivm-view-attr__icon ivm-view-attr__icon--icon  "
+                    size="large"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      data-supported-dps="24x24"
+                      fill="currentColor"
+                      class="mercado-match"
+                      width="24"
+                      height="24"
+                      focusable="false"
+                    >
+                      <path d="M21.41 18.59l-5.27-5.28A6.83 6.83 0 0017 10a7 7 0 10-7 7 6.83 6.83 0 003.31-.86l5.28 5.27a2 2 0 002.82-2.82zM5 10a5 5 0 115 5 5 5 0 01-5-5z"></path>
+                    </svg>
+                  </li-icon>
+                  7 comparsa nei motori di ricerca
+                </h6>
+              </a>
+              <p>Vedi quante volte compari nei risultati di ricerca.</p>
             </div>
           </Col>
         </Row>
