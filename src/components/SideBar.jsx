@@ -18,7 +18,8 @@ const SideBar = () => {
   const dispatch = useDispatch();
   const allProfileData = useSelector((state) =>
     state.getFetch.allProfile.slice(0, 10)
-  );
+    );
+    const similarProfileData = useSelector ((state) =>  state.getFetch.allProfile.slice(10, 20));
 
   useEffect(() => {
     dispatch(fetchAllProfileAction());
@@ -73,24 +74,30 @@ const SideBar = () => {
         </ListGroup>
       </Card>
       <Card>
-        <Card.Header>Altri Profili simili</Card.Header>
-        <ListGroup>
-          <ListGroup.Item>
-            <div className="d-flex flex-row justify-content-start">
-              <span>
-                <Image src={""} roundedCircle />
-              </span>
-              <div className="d-flex flex-column justify-content-end">
-                <div className="d-flex flex-row"></div>
-                <p> </p>
-                <div className="d-flex justify-content-center">
-                  <Button>Collegati</Button>
-                </div>
+          <Card.Header className="bg-white color-black">
+            <h5 className="mb-0">Persone che potresti conoscere</h5>
+            <h5> dalla tua scuola o la tua università</h5>
+          </Card.Header>
+          {similarProfileData.map((person, index) => (
+            <div key={index} className="d-lg-flex p-3 ">
+              <div>
+                <img
+                  src={person.image}
+                  alt={person.name}
+                  className="rounded-circle me-2"
+                  style={{ width: "45px", height: "45px" }}
+                />
+              </div>
+              <div>
+                <h5 className="m-0">{person.name}</h5>
+                <p className="m-0">{person.title}</p>
+                <Button className="d-flex align-items-center buttonColleg px-3 py-1 mt-1">
+                  <i className="bi bi-person-plus"></i>Collegati
+                </Button>
               </div>
             </div>
-          </ListGroup.Item>
-        </ListGroup>
-      </Card>
+          ))}
+        </Card>
       <div>
         <Card>
           <Card.Header className="bg-white color-black">
@@ -122,3 +129,4 @@ const SideBar = () => {
   );
 };
 export default SideBar;
+
