@@ -31,10 +31,7 @@ function Experiences() {
       new Date(endDate),
       new Date(startDate)
     );
-    const monthsWorked = differenceInMonths(
-      new Date(endDate),
-      new Date(startDate)
-    );
+    
     return monthsWorked;
   };
 
@@ -111,4 +108,4 @@ function Experiences() {
   );
 }
 
-export default Experiences;
+export default Experiences
