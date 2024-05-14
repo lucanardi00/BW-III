@@ -31,10 +31,7 @@ function Experiences() {
       new Date(endDate),
       new Date(startDate)
     );
-    const monthsWorked = differenceInMonths(
-      new Date(endDate),
-      new Date(startDate)
-    );
+
     return monthsWorked;
   };
 
@@ -54,12 +51,6 @@ function Experiences() {
 
   return (
     <>
-      <Card className="risorse">
-        <Card.Header className="cardheader d-flex justify-content-between">
-          <div>
-            <h5>Esperienza</h5>
-          </div>
-          <div>
       <Card className="risorse">
         <Card.Header className="cardheader d-flex justify-content-between">
           <div>
