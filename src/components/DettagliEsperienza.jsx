@@ -8,7 +8,7 @@ import FormEsperienze from "./FormEsperienze";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchExperiences } from "../redux/actions/experienceActions";
 
-function Experiences() {
+function DettagliExperiences() {
   const dispatch = useDispatch();
   const allExperience = useSelector((state) => state.getExpereince.expereince);
   const myProfile = useSelector((state) => state.getFetch.profile);
@@ -106,4 +106,4 @@ function Experiences() {
   );
 }
 
-export default Experiences;
+export default DettagliExperiences;
