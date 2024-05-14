@@ -78,3 +78,9 @@ p{
 .ancorCaourusel{
     margin-bottom: 10px;
 }
+.containerInputFoto{
+    min-height: 200px;
+}
+.mouseHover:hover{
+    cursor: pointer;
+}

@@ -8,7 +8,10 @@ import {
   Image,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllProfileAction } from "../redux/actions";
+import {
+  fetchAllProfileAction,
+  fetchUserProfileAction,
+} from "../redux/actions";
 import { useEffect } from "react";
 
 const SideBar = () => {
@@ -20,6 +23,10 @@ const SideBar = () => {
     state.getFetch.allProfile.slice(0, 10)
     );
     const similarProfileData = useSelector ((state) =>  state.getFetch.allProfile.slice(10, 20));
+
+  const changeProfile = (personId) => {
+    dispatch(fetchUserProfileAction(personId));
+  };
 
   useEffect(() => {
     dispatch(fetchAllProfileAction());
@@ -108,6 +115,7 @@ const SideBar = () => {
             <div key={index} className="d-lg-flex p-3 ">
               <div>
                 <img
+                  onClick={() => changeProfile(person._id)}
                   src={person.image}
                   alt={person.name}
                   className="rounded-circle me-2"

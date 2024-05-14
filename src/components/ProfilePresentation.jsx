@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Button, Container, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfileAction } from "../redux/actions";
 import "../profilePresentation.css";
@@ -10,10 +10,52 @@ import Slider from "react-slick";
 const ProfilePresentation = () => {
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.getFetch.profile);
+  const [image, setImage] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
+  const handleFileChange = (event) => {
+    setImage(event.target.files[0]);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("profile", image);
+    updatePhotoProfileAction("66431ae955621a0015c15fd2", formData);
+  };
+  const updatePhotoProfileAction = async (userId, formData) => {
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`,
+        {
+          method: "POST",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQzMWFlOTU1NjIxYTAwMTVjMTVmZDIiLCJpYXQiOjE3MTU2NzM4MzMsImV4cCI6MTcxNjg4MzQzM30.ri-G1Ow1lNp8ezUcHFJPFvJs5VRkCvBr3P-y85XpdAw",
+          },
+          body: formData,
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        console.log("foto passata", data);
+        dispatch(fetchUserProfileAction("me"));
+      } else {
+        console.log("error");
+        throw new Error("Errore nell'aggiornamento della foto del profilo 😥");
+      }
+    } catch (error) {
+      console.log("Errore nell'aggiornamento della foto del profilo", error);
+    }
+  };
 
   useEffect(() => {
     dispatch(fetchUserProfileAction("me"));
-  }, []);
+  }, [image]);
 
   console.log("mee", myProfile);
 
@@ -53,11 +95,12 @@ const ProfilePresentation = () => {
         <div
           className="position-relative"
           style={{ top: "70px", left: "30px" }}
+          onClick={handleOpenModal}
         >
           <img
             src={myProfile.image}
             alt="Immagine"
-            className="rounded-circle position-absolute"
+            className="rounded-circle position-absolute mouseHover"
             style={{ width: "170px", height: "170px" }}
           />
         </div>
@@ -122,6 +165,47 @@ const ProfilePresentation = () => {
           </div>
         </Slider>
       </div>
+      <Container>
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <form onSubmit={handleSubmit}>
+            <Modal.Header closeButton>
+              <Modal.Title className="ms-4">Aggiungi foto</Modal.Title>
+            </Modal.Header>
+            <div className="containerInputFoto p-5 pb-2 text-center">
+              <h5>La tua foto non deve essere per forza un pirmo piano!</h5>
+              <h5>Ma qualcosa che ti rappresenti.</h5>
+              <img
+                src={myProfile.image}
+                alt="Immagine"
+                className="rounded-circle m-4"
+                style={{ width: "120px", height: "120px" }}
+              />
+              <input
+                type="file"
+                name="profile"
+                onChange={handleFileChange}
+                className="m-4"
+              />
+              <p>
+                Chiediamo agli utenti di LinkedIn di utilizzare le loro vere
+                identità, quindi scatta o carica una tua foto
+              </p>
+            </div>
+            <Modal.Footer className="d-flex justify-content-between">
+              <Button className="btn-rounded" type="submit">
+                Carica foto
+              </Button>
+              <Button
+                className="btn-rounded"
+                variant="secondary"
+                onClick={handleCloseModal}
+              >
+                Chiudi
+              </Button>
+            </Modal.Footer>
+          </form>
+        </Modal>
+      </Container>
     </div>
   );
 };
