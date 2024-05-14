@@ -3,11 +3,17 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { differenceInMonths } from "date-fns";
+import Button from "react-bootstrap/Button";
+import FormEsperienze from "./FormEsperienze"
 
 function Experiences({ userId }) {
   const [experiences, setExperiences] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const [modalShow, setModalShow] = useState(false);
+  const handleClose = () => setModalShow(false);
+  const handleShow = () => setModalShow(true);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -56,15 +62,20 @@ function Experiences({ userId }) {
   }
 
   return (
+    <>
     <Card className="risorse">
       <Card.Header className="cardheader d-flex justify-content-between">
         <div>
           <h5>Esperienza</h5>
         </div>
         <div>
-          <i className="bi bi-plus-lg me-2"></i>
-          <i className="bi bi-pencil"></i>
-        </div>
+            <Button className="main-buttons" onClick={handleShow}>
+              <i className="bi bi-plus-lg me-2"></i>
+            </Button>
+            <Button className="main-buttons">
+              <i className="bi bi-pencil pe-0"></i>
+            </Button>
+          </div>
       </Card.Header>
       <Card.Body>
         {experiences.map((experience, index) => (
@@ -89,6 +100,8 @@ function Experiences({ userId }) {
         ))}
       </Card.Body>
     </Card>
+    <FormEsperienze modalShow={modalShow} handleClose={handleClose} />
+    </>
   );
 }
 
