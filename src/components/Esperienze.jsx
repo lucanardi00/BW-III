@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -31,6 +31,10 @@ function Experiences() {
       new Date(endDate),
       new Date(startDate)
     );
+    const monthsWorked = differenceInMonths(
+      new Date(endDate),
+      new Date(startDate)
+    );
     return monthsWorked;
   };
 
@@ -50,6 +54,12 @@ function Experiences() {
 
   return (
     <>
+      <Card className="risorse">
+        <Card.Header className="cardheader d-flex justify-content-between">
+          <div>
+            <h5>Esperienza</h5>
+          </div>
+          <div>
       <Card className="risorse">
         <Card.Header className="cardheader d-flex justify-content-between">
           <div>

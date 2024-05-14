@@ -1,4 +1,3 @@
-import React from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -19,7 +18,7 @@ function Analisi() {
             viewBox="0 0 16 16"
             data-supported-dps="16x16"
             fill="currentColor"
-            class="mercado-match"
+            className="mercado-match"
             width="16"
             height="16"
             focusable="false"
@@ -46,7 +45,7 @@ function Analisi() {
                       viewBox="0 0 24 24"
                       data-supported-dps="24x24"
                       fill="currentColor"
-                      class="mercado-match"
+                      className="mercado-match"
                       width="24"
                       height="24"
                       focusable="false"
@@ -62,7 +61,7 @@ function Analisi() {
           </Col>
           <Col xs={4} className="text-center">
             <div>
-              <a href="">
+              <a href="#">
                 <h6 className="text-dark text-decoration-none">
                   <li-icon
                     aria-hidden="true"
@@ -75,7 +74,7 @@ function Analisi() {
                       viewBox="0 0 24 24"
                       data-supported-dps="24x24"
                       fill="currentColor"
-                      class="mercado-match"
+                      className="mercado-match"
                       width="24"
                       height="24"
                       focusable="false"
@@ -91,7 +90,7 @@ function Analisi() {
           </Col>
           <Col xs={4} className="text-center">
             <div>
-              <a href="">
+              <a href="#">
                 <h6 className="text-dark text-decoration-none">
                   <li-icon
                     aria-hidden="true"
@@ -104,7 +103,7 @@ function Analisi() {
                       viewBox="0 0 24 24"
                       data-supported-dps="24x24"
                       fill="currentColor"
-                      class="mercado-match"
+                      className="mercado-match"
                       width="24"
                       height="24"
                       focusable="false"
