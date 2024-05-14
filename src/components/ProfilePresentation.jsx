@@ -25,7 +25,7 @@ const ProfilePresentation = () => {
 
     const formData = new FormData();
     formData.append("profile", image);
-    updatePhotoProfileAction("66431ae955621a0015c15fd2", formData);
+    updatePhotoProfileAction("6643806e3ff4a500155f4253", formData);
   };
   const updatePhotoProfileAction = async (userId, formData) => {
     try {
@@ -143,7 +143,7 @@ const ProfilePresentation = () => {
             <div className="containerCarousel p-2 pb-4 ">
               <div className="d-flex justify-content-between ">
                 <h5 className="m-0">Disponibile a lavorare</h5>
-                <i class="bi bi-pencil"></i>
+                <i className="bi bi-pencil"></i>
               </div>
               <p className="m-0">Ruolo di sviluppatore web</p>
               <a className="ancorCaourusel" href="">
@@ -155,7 +155,7 @@ const ProfilePresentation = () => {
             <div className="containerCarousel p-2 pb-4 ">
               <div className="d-flex justify-content-between ">
                 <h5 className="m-0">Fai sapere cosa stai facendo seleziona</h5>
-                <i class="bi bi-x-lg"></i>
+                <i className="bi bi-x-lg"></i>
               </div>
               <p className="m-0">e attrai candidati qualificati</p>
               <a className="ancorCaourusel" href="">
