@@ -8,6 +8,7 @@ import Profile from "./Informazioni";
 import Post from "./Post";
 import Projects from "./Progetti";
 import Risorse from "./Risorse";
+import Footer from "./Footer";
 
 const ProfilePage = () => {
   return (
@@ -28,6 +29,8 @@ const ProfilePage = () => {
           <SideBar />
         </Row>
       </Container>
+      <Footer />
+      
     </>
   );
 };
