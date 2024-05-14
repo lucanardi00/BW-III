@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfileAction } from "../redux/actions";
@@ -10,6 +10,44 @@ import Slider from "react-slick";
 const ProfilePresentation = () => {
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.getFetch.profile);
+  const [image, setImage] = useState("");
+  console.log("immagine", image);
+
+  const handleFileChange = (event) => {
+    setImage(event.target.files[0]);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("profile", image);
+    updatePhotoProfileAction("66431ae955621a0015c15fd2", formData);
+  };
+  const updatePhotoProfileAction = async (userId, formData) => {
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`,
+        {
+          method: "POST",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQzMWFlOTU1NjIxYTAwMTVjMTVmZDIiLCJpYXQiOjE3MTU2NzM4MzMsImV4cCI6MTcxNjg4MzQzM30.ri-G1Ow1lNp8ezUcHFJPFvJs5VRkCvBr3P-y85XpdAw",
+          },
+          body: formData,
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        console.log("foto passata", data);
+      } else {
+        console.log("error");
+        throw new Error("Errore nell'aggiornamento della foto del profilo 😥");
+      }
+    } catch (error) {
+      console.log("Errore nell'aggiornamento della foto del profilo", error);
+    }
+  };
 
   useEffect(() => {
     dispatch(fetchUserProfileAction("me"));
@@ -121,6 +159,12 @@ const ProfilePresentation = () => {
             </div>
           </div>
         </Slider>
+      </div>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input type="file" name="profile" onChange={handleFileChange} />
+          <button type="submit">Upload Photo</button>
+        </form>
       </div>
     </div>
   );
