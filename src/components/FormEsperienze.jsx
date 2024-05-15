@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useDispatch } from "react-redux";
+import { fetchExperiences } from "../redux/actions/experienceActions";
 
 function FormEsperienze(props) {
   const [showInput, setShowInput] = useState(false);
@@ -57,10 +59,6 @@ function FormEsperienze(props) {
       console.log(error);
     }
   };
-
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     dispatch(fetchToPost());
 
   const toggleInput = () => {
     setShowInput(!showInput);
