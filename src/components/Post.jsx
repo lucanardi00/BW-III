@@ -1,14 +1,51 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import FormPost from "./FormPost";
+import { useSelector } from "react-redux";
 
 function Post() {
+  const user = useSelector((state) => state.getFetch.profile);
   const [modalShow, setModalShow] = useState(false);
   const handleClose = () => setModalShow(false);
   const handleShow = () => setModalShow(true);
-  const name = "Luca Nardi";
+
+  const me = user._id;
+  console.log(me, "ilmiopost");
+
+  const [myPost, setMyPost] = useState([]);
+  const showMyPost = async () => {
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQzMWFlOTU1NjIxYTAwMTVjMTVmZDIiLCJpYXQiOjE3MTU2NzM4MzMsImV4cCI6MTcxNjg4MzQzM30.ri-G1Ow1lNp8ezUcHFJPFvJs5VRkCvBr3P-y85XpdAw",
+          },
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setMyPost(data);
+        console.log(myPost);
+      } else {
+        console.log("error");
+        throw new Error("Errore nellrecupero dei post 😥");
+      }
+    } catch (error) {
+      console.log("Errore nell'aggiornamento dei post", error);
+    }
+  };
+
+  const myFilteredPosts = myPost.filter((post) => post.user._id === me);
+  console.log(myFilteredPosts);
+
+  useEffect(() => {
+    showMyPost();
+  }, []);
+
   return (
     <>
       <Card className="risorse">
@@ -49,43 +86,27 @@ function Post() {
           </div>
         </Card.Header>
         <Card.Body>
-          <Row>
-            <Col>
-              <h6 className="text-muted fw-light">
-                {name} ha pubblicato questo post ∙ 1s
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={2}>
-              <p>POST IMG</p>
-            </Col>
-            <Col xs={4}>
-              <p>
-                Ho il piacere di condividere questo progeto ?, a cui ho
-                lavorato.
-              </p>
-            </Col>
-          </Row>
-          <hr />
-          <Row>
-            <Col>
-              <h6 className="text-muted fw-light">
-                {name} ha pubblicato questo post ∙ 1s
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={2}>
-              <p>POST IMG</p>
-            </Col>
-            <Col xs={4}>
-              <p>
-                Ho il piacere di condividere questo progeto ?, a cui ho
-                lavorato.
-              </p>
-            </Col>
-          </Row>
+          {myFilteredPosts.map((me) => {
+            return (
+              <>
+                <Row>
+                  <Col>
+                    <h6 className="text-muted fw-light">
+                      {me.username} ha pubblicato questo post ∙ {me.createdAt}
+                    </h6>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={2}>
+                    <p>POST IMG</p>
+                  </Col>
+                  <Col xs={4}>
+                    <p>{me.text}</p>
+                  </Col>
+                </Row>
+              </>
+            );
+          })}
         </Card.Body>
         <Card.Footer className="cardfooter">
           <a
