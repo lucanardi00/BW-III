@@ -6,9 +6,10 @@ import {
 } from "../redux/actions";
 import { useEffect } from "react";
 import { fetchExperiences } from "../redux/actions/experienceActions";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const SideBar = () => {
+  const {} = useParams () 
   const dispatch = useDispatch();
   const allProfileData = useSelector((state) =>
     state.getFetch.allProfile.slice(0, 10)
@@ -20,6 +21,7 @@ const SideBar = () => {
   const changeProfile = (personId) => {
     dispatch(fetchUserProfileAction(personId));
     dispatch(fetchExperiences(personId));
+  
   };
 
   useEffect(() => {
@@ -82,7 +84,7 @@ const SideBar = () => {
         {similarProfileData.map((person, index) => (
           <div key={index} className="d-lg-flex p-3 ">
             <div>
-            <Link to={`/profile/:userId/${person._id}`}>
+            <Link to={`/profile/${person._id}`}>
               <img
                 src={person.image}
                 alt={person.name}
@@ -110,13 +112,15 @@ const SideBar = () => {
           {allProfileData.map((person, index) => (
             <div key={index} className="d-lg-flex p-3 ">
               <div>
+                <Link to={`/profile/${person._id}`}>
                 <img
-                  onClick={() => changeProfile(person._id)}
-                  src={person.image}
-                  alt={person.name}
-                  className="rounded-circle me-2"
+                
+                src={person.image}
+                alt={person.name}
+                className="rounded-circle me-2"
                   style={{ width: "45px", height: "45px" }}
-                />
+                  />
+                  </Link>
               </div>
               <div>
                 <h5 className="m-0">{person.name}</h5>

@@ -57,6 +57,7 @@ const ProfilePresentation = () => {
     dispatch(fetchUserProfileAction("me"));
   }, [image]);
 
+
   console.log("mee", myProfile);
 
   const settings = {

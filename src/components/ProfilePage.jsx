@@ -9,8 +9,12 @@ import Post from "./Post";
 import Projects from "./Progetti";
 import Risorse from "./Risorse";
 import Footer from "./Footer";
+import { useParams } from "react-router-dom";
+
 
 const ProfilePage = () => {
+  const {} = useParams({idProfile})
+  console.log("idProfile", idProfile)
   return (
     <>
       <Container className="mainContainer">
