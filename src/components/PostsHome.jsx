@@ -5,6 +5,16 @@ import ImageUserPostHomepage from "./ImageUserPostHomepage";
 const PostsHome = () => {
   const [allPosts, setAllPosts] = useState([]);
   console.log(allPosts);
+  //   const randomImagePost = [
+  //     "https://plus.unsplash.com/premium_photo-1714229505201-072ef1c6edcd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //     "https://plus.unsplash.com/premium_photo-1671430149410-0f3d554127a2?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //     "https://plus.unsplash.com/premium_photo-1669144690665-17dde1269f68?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //     "https://images.unsplash.com/photo-1715428019327-fa9363fba1ef?q=80&w=2075&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //     "https://images.unsplash.com/photo-1714715362537-4aa538a6f0ab?q=80&w=2012&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //     "https://plus.unsplash.com/premium_photo-1666277012792-08955a43e51c?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //     "https://images.unsplash.com/photo-1715090039874-cf28b78a9f08?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //     "https://images.unsplash.com/photo-1715604723666-866e18a5d257?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //   ];
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -47,9 +57,14 @@ const PostsHome = () => {
             </div>
             <p className="m-0">{post.text}</p>
           </div>
-          <div>
+          <div className="text-center">
             <img
-              src="https://plus.unsplash.com/premium_photo-1714229505201-072ef1c6edcd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src={post.image}
+              //   {
+              //     randomImagePost[
+              //       Math.floor(Math.random() * randomImagePost.length)
+              //     ]
+              //   }
               alt=""
               className="img-fluid"
             />

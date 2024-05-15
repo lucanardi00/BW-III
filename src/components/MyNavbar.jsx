@@ -11,7 +11,7 @@ import { fetchUserProfileAction } from "../redux/actions";
 import MyOffcanvas from "./MyOffcanvas";
 import { Link } from "react-router-dom";
 
-function MyNavbar(props) {
+function MyNavbar() {
   const dispatch = useDispatch();
   const me = useSelector((state) => state.getFetch.profile);
   console.log(me);
@@ -21,7 +21,7 @@ function MyNavbar(props) {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    dispatch(fetchUserProfileAction(props.query));
+    dispatch(fetchUserProfileAction());
   }, []);
 
   return (
@@ -107,9 +107,12 @@ function MyNavbar(props) {
                     href="#action4"
                     className="text-align-center"
                   >
-                    <Button variant="outline-info" className="p-0 w-100">
-                      Visualizza profilo
-                    </Button>
+                    {" "}
+                    <Link to={`/profile/me`}>
+                      <Button variant="outline-info" className="p-0 w-100">
+                        Visualizza profilo
+                      </Button>
+                    </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <h6>Account</h6>
