@@ -2,17 +2,31 @@ import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import FormPost from "./FormPost";
 import { useSelector } from "react-redux";
 
 function Post() {
   const user = useSelector((state) => state.getFetch.profile);
-  const [modalShow, setModalShow] = useState(false);
-  const handleClose = () => setModalShow(false);
-  const handleShow = () => setModalShow(true);
+  const [showCreatePostModal, setShowCreatePostModal] = useState(false);
+  const [showEditPostModal, setShowEditPostModal] = useState(false);
+  const [editPost, setEditPost] = useState(null);
+  const [updatedText, setUpdatedText] = useState("");
+
+  const handleCloseCreatePostModal = () => setShowCreatePostModal(false);
+  const handleShowCreatePostModal = () => setShowCreatePostModal(true);
+
+  const handleCloseEditPostModal = () => {
+    setShowEditPostModal(false);
+    setEditPost(null);
+    setUpdatedText("");
+  };
+
+  const handleShowEditPostModal = () => setShowEditPostModal(true);
 
   const me = user._id;
-  console.log(me, "ilmiopost");
+
 
   const [myPost, setMyPost] = useState([]);
   const showMyPost = async () => {
@@ -40,7 +54,68 @@ function Post() {
   };
 
   const myFilteredPosts = myPost.filter((post) => post.user._id === me);
-  console.log(myFilteredPosts);
+
+
+  const deletePost = async (postId) => {
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQxYzAxZTE2N2U1MzAwMTVmYTY5NzciLCJpYXQiOjE3MTU1ODUwNTUsImV4cCI6MTcxNjc5NDY1NX0.oMCLB4PAEReTiWGPS97aY6U0owrc4rQySh7kmp9695Y",
+          },
+        }
+      );
+      if (response.ok) {
+        setMyPost(myPost.filter((post) => post._id !== postId));
+        console.log("Post deleted");
+      } else {
+        console.log("Error deleting post");
+      }
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
+  };
+
+  const updatePost = async (postId, updatedData) => {
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQxYzAxZTE2N2U1MzAwMTVmYTY5NzciLCJpYXQiOjE3MTU1ODUwNTUsImV4cCI6MTcxNjc5NDY1NX0.oMCLB4PAEReTiWGPS97aY6U0owrc4rQySh7kmp9695Y",
+          },
+          body: JSON.stringify(updatedData),
+        }
+      );
+      if (response.ok) {
+        console.log("Post aggiornato!");
+        showMyPost();
+        handleCloseEditPostModal();
+      } else {
+        console.log("Errore nella moidifica");
+      }
+    } catch (error) {
+      console.error("Errore nella modifica", error);
+    }
+  };
+
+  const handleModify = (post) => {
+    setEditPost(post);
+    setUpdatedText(post.text);
+    handleShowEditPostModal();
+  };
+
+  const handleUpdate = () => {
+    if (editPost) {
+      updatePost(editPost._id, { text: updatedText });
+    }
+  };
 
   useEffect(() => {
     showMyPost();
@@ -77,7 +152,7 @@ function Post() {
           </div>
           <div>
             <button
-              onClick={handleShow}
+              onClick={handleShowCreatePostModal}
               className="me-2 rounded bg-transparent text-primary border-primary"
             >
               Crea un Post
@@ -86,27 +161,43 @@ function Post() {
           </div>
         </Card.Header>
         <Card.Body>
-          {myFilteredPosts.map((me) => {
-            return (
-              <>
-                <Row>
-                  <Col>
-                    <h6 className="text-muted fw-light">
-                      {me.username} ha pubblicato questo post ∙ {me.createdAt}
-                    </h6>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs={2}>
-                    <p>POST IMG</p>
-                  </Col>
-                  <Col xs={4}>
-                    <p>{me.text}</p>
-                  </Col>
-                </Row>
-              </>
-            );
-          })}
+        {myFilteredPosts.map((me, index) => {
+  return (
+    <React.Fragment key={index}>
+      <Row>
+        <Col>
+          <h6 className="text-muted fw-light">
+            {me.username} ha pubblicato questo post ∙ {me.createdAt}
+          </h6>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={2}>
+          <p>POST IMG</p>
+        </Col>
+        <Col xs={4}>
+          <p>{me.text}</p>
+        </Col>
+        <Col>
+          <i
+            className="bi bi-trash3 trash"
+            onClick={() => deletePost(me._id)}
+          ></i>
+          <li-icon
+            aria-hidden="true"
+            type="edit"
+            class="v-align-bottom text-secondary"
+            size="small"
+            onClick={() => handleModify(me)}
+            style={{ cursor: "pointer" }}
+          >
+            <i class="bi bi-pencil ms-4"></i>
+          </li-icon>
+        </Col>
+      </Row>
+    </React.Fragment>
+  );
+})}
         </Card.Body>
         <Card.Footer className="cardfooter">
           <a
@@ -117,7 +208,29 @@ function Post() {
           </a>
         </Card.Footer>
       </Card>
-      <FormPost modalShow={modalShow} handleClose={handleClose} />
+      <FormPost modalShow={showCreatePostModal} handleClose={handleCloseCreatePostModal} />
+      {editPost && (
+        <Modal show={showEditPostModal} onHide={handleCloseEditPostModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modifica Post</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <input
+              type="text"
+              value={updatedText}
+              onChange={(e) => setUpdatedText(e.target.value)}
+            />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseEditPostModal}>
+              Chiudi
+            </Button>
+            <Button variant="primary" onClick={handleUpdate}>
+              Applica Cambiamenti
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </>
   );
 }

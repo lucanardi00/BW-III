@@ -211,3 +211,7 @@ h6 {
   color: grey;
   border-color: grey;
 }
+
+.trash:hover{
+  cursor: pointer;
+}
