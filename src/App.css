@@ -92,3 +92,44 @@ h6 {
 .footer-list {
   list-style-type: none;
 }
+
+.item{
+  border: none;
+}
+
+.infoIcon{
+  font-size: smaller;
+}
+
+.item:hover{
+  background-color: #F4F2EE;
+}
+
+.item a {
+  text-decoration: none;
+}
+
+.info {
+  font-size: smaller ;
+}
+
+.headerBar{
+  font-size: smaller;
+}
+
+.infoAd{
+  font-size: 0.7rem;
+}
+
+.trial{
+  border-radius: 20px;
+}
+
+.footer {
+  font-size: smaller;
+  line-height: 0.7rem;
+}
+
+.copyright{
+  font-size: smaller;
+}
