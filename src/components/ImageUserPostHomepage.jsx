@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const ImmagineUtentePostHomepage = ({ userId }) => {
   const [utente, impostaUtente] = useState(null);
@@ -36,12 +37,14 @@ const ImmagineUtentePostHomepage = ({ userId }) => {
     <>
       {utente ? (
         <div className="d-flex align-items-center">
-          <img
-            src={utente.image}
-            alt="Immagine"
-            className="rounded-circle img-fluid mouseHover me-2"
-            style={{ width: "50px", height: "50px" }}
-          />
+          <Link to={`/profile/${userId}`}>
+            <img
+              src={utente.image}
+              alt="Immagine"
+              className="rounded-circle img-fluid mouseHover me-2"
+              style={{ width: "50px", height: "50px" }}
+            />
+          </Link>
           <div>
             <h5 className="m-0 name-HomePost">{utente.name}</h5>
             <p className="m-0 text-postHomep">{utente.title}</p>

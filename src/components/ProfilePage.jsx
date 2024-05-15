@@ -9,14 +9,17 @@ import Post from "./Post";
 import Projects from "./Progetti";
 import Risorse from "./Risorse";
 import Footer from "./Footer";
+import { useParams } from "react-router-dom";
 
 const ProfilePage = () => {
+  const { userId } = useParams();
+  console.log("IDPROFILO", userId);
   return (
     <>
       <Container className="mainContainer">
         <Row>
           <Col md={9}>
-            <ProfilePresentation />
+            <ProfilePresentation idprofile={userId} />
 
             <Analisi />
             <Risorse />
@@ -30,7 +33,6 @@ const ProfilePage = () => {
         </Row>
       </Container>
       <Footer />
-      
     </>
   );
 };

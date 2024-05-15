@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Modal } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
 import { fetchUserProfileAction } from "../redux/actions";
 import "../profilePresentation.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-const ProfilePresentation = () => {
+const ProfilePresentation = ({ idprofile }) => {
   const dispatch = useDispatch();
-  const myProfile = useSelector((state) => state.getFetch.profile);
+  // const myProfile = useSelector((state) => state.getFetch.profile);
+  const [myProfile, setMyProfile] = useState([]);
   const [image, setImage] = useState("");
   const [showModal, setShowModal] = useState(false);
+  console.log("AAAAAAAAAAAAH", myProfile);
 
   const handleOpenModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
@@ -25,8 +28,9 @@ const ProfilePresentation = () => {
 
     const formData = new FormData();
     formData.append("profile", image);
-    updatePhotoProfileAction("6643806e3ff4a500155f4253", formData);
+    updatePhotoProfileAction(idprofile, formData);
   };
+
   const updatePhotoProfileAction = async (userId, formData) => {
     try {
       const response = await fetch(
@@ -34,8 +38,7 @@ const ProfilePresentation = () => {
         {
           method: "POST",
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQzMWFlOTU1NjIxYTAwMTVjMTVmZDIiLCJpYXQiOjE3MTU2NzM4MzMsImV4cCI6MTcxNjg4MzQzM30.ri-G1Ow1lNp8ezUcHFJPFvJs5VRkCvBr3P-y85XpdAw",
+            Authorization: "Bearer your_access_token_here",
           },
           body: formData,
         }
@@ -54,10 +57,31 @@ const ProfilePresentation = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchUserProfileAction("me"));
-  }, [image]);
-
-  console.log("mee", myProfile);
+    const fetchTry = async (idprofile) => {
+      try {
+        const response = await fetch(
+          "https://striveschool-api.herokuapp.com/api/profile/" + idprofile,
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQxYzAxZTE2N2U1MzAwMTVmYTY5NzciLCJpYXQiOjE3MTU1ODUwNTUsImV4cCI6MTcxNjc5NDY1NX0.oMCLB4PAEReTiWGPS97aY6U0owrc4rQySh7kmp9695Y",
+            },
+          }
+        );
+        if (response.ok) {
+          let data = await response.json();
+          setMyProfile(data);
+          console.log("BBBBBBBBBB", data);
+        } else {
+          console.log("error");
+          throw new Error("Errore nel reperimento dei dati 😥");
+        }
+      } catch (error) {
+        console.log("Errore nella ricerca dell'Utente", error);
+      }
+    };
+    fetchTry(idprofile);
+  }, [idprofile, image]);
 
   const settings = {
     speed: 500,
@@ -208,6 +232,9 @@ const ProfilePresentation = () => {
       </Container>
     </div>
   );
+};
+ProfilePresentation.propTypes = {
+  idprofile: PropTypes.string.isRequired,
 };
 
 export default ProfilePresentation;
