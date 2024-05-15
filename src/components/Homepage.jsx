@@ -1,6 +1,7 @@
 import { Container, Row } from "react-bootstrap";
 import Sidebar from "./RightSideBar";
 import BarraProfiloHomepage from "./BarraProfiloHomepage";
+import PostsHome from "./PostsHome";
 
 const Homepage = () => {
   return (
@@ -8,6 +9,7 @@ const Homepage = () => {
       <Container className="mainContainer">
         <Row>
           <BarraProfiloHomepage />
+          <PostsHome />
           <Sidebar />
         </Row>
       </Container>
