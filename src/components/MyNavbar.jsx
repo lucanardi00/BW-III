@@ -9,6 +9,7 @@ import MySearchBar from "./MySearchBar";
 import { Button, Dropdown, DropdownMenu, Image } from "react-bootstrap";
 import { fetchUserProfileAction } from "../redux/actions";
 import MyOffcanvas from "./MyOffcanvas";
+import { Link } from "react-router-dom";
 
 function MyNavbar(props) {
   const dispatch = useDispatch();
@@ -38,12 +39,16 @@ function MyNavbar(props) {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link
-                href="#action1"
-                className="d-flex flex-column align-items-center"
-              >
+              <Link to={'/'}>
+
+                  <Nav.Link
+                  href="#action1"
+                  className="d-flex flex-column align-items-center"
+                  >
                 <i className="bi bi-house-fill"></i>Home
               </Nav.Link>
+               
+                </Link>
               <Nav.Link
                 href="#action2"
                 className="d-flex flex-column align-items-center"
@@ -90,10 +95,12 @@ function MyNavbar(props) {
                       roundedCircle
                     />
                     <div>
+                      <Link to={'/profile/:userId'}>
                       <p className="m-0">
                         {me.name} {me.surname}
                       </p>
                       <span>--</span>
+                      </Link>
                     </div>
                   </NavDropdown.Item>
                   <NavDropdown.Item

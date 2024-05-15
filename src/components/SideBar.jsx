@@ -6,6 +6,7 @@ import {
 } from "../redux/actions";
 import { useEffect } from "react";
 import { fetchExperiences } from "../redux/actions/experienceActions";
+import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const dispatch = useDispatch();
@@ -81,12 +82,14 @@ const SideBar = () => {
         {similarProfileData.map((person, index) => (
           <div key={index} className="d-lg-flex p-3 ">
             <div>
+            <Link to={`/profile/:userId/${person._id}`}>
               <img
                 src={person.image}
                 alt={person.name}
                 className="rounded-circle me-2"
                 style={{ width: "45px", height: "45px" }}
-              />
+                />
+                </Link>
             </div>
             <div>
               <h5 className="m-0">{person.name}</h5>
