@@ -12,13 +12,12 @@ const BarraProfiloHomepage = () => {
   }, []);
   return (
     <Container fluid>
-      <Row>
-        <Col>
+        <Col md={2}>
           <Card className="my-2">
             <Card.Img
               variant="top"
               src=""
-              style={{ height: "150px" }}
+              style={{ height: "50px" }}
             ></Card.Img>
             <Card.Body className="position-relative text-center">
               <div className="position-absolute top-0 start-50 translate-middle">
@@ -39,20 +38,20 @@ const BarraProfiloHomepage = () => {
                 {myProfile.title}
               </Card.Text>
               <ListGroup className="list-group-flush d-none d-md-block">
-                <ListGroup.Item className="text-secondary m-0">
+                <ListGroup.Item className="text-secondary m-0 fw-small">
                   Collegamenti
-                  <span className="d-block text-black">
+                  <span className="d-block text-black fw-small">
                     Espandi la tua rete
                   </span>
                 </ListGroup.Item>
-                <ListGroup.Item>
+                <ListGroup.Item className="fw-small">
                   Raggiungi i tuoi obiettivi con Premium
-                  <span className="fw-light d-block fs-6">
+                  <span className="fw-light fw-small d-block fs-6">
                     <i className="bi bi-square-half text-warning"></i> Prova
                     Premium per 0 EUR
                   </span>
                 </ListGroup.Item>
-                <ListGroup.Item>
+                <ListGroup.Item className="fw-small">
                   <i className="bi bi-bookmark-fill text-secondary"></i> I miei
                   elementi
                 </ListGroup.Item>
@@ -60,7 +59,6 @@ const BarraProfiloHomepage = () => {
             </Card.Body>
           </Card>
         </Col>
-      </Row>
     </Container>
   );
 };
