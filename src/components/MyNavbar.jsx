@@ -39,7 +39,7 @@ function MyNavbar() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Link to={'/'}>
+              <Link to={'/'} className="text-decoration-none">
 
                   <Nav.Link
                   href="#action1"
