@@ -156,11 +156,10 @@ h6 {
   color: black;
   border: none;
 }
-.containerPostHome{
+.containerPostHome {
   border-radius: 10px;
-  
 }
-.btnPostHome{
+.btnPostHome {
   background-color: white;
   color: #000000ad;
   border: none;
@@ -169,32 +168,46 @@ h6 {
   display: flex;
   align-items: center;
 }
-.btnPostHome:hover{
+.btnPostHome:hover {
   background-color: rgb(241, 241, 241);
   color: black;
-  
 }
-.btnLike{
+.btnLike {
   width: 15px;
   height: 15px;
 }
-.btnLikeIcon{
+.btnLikeIcon {
   font-size: 10px;
 }
-.textOtherPeeople{
+.textOtherPeeople {
   font-size: 0.7em;
 }
-.textOtherPeeople:hover{
+.textOtherPeeople:hover {
   color: rgb(117, 117, 218);
   cursor: pointer;
   text-decoration: underline;
 }
-.text-postHomep{
+.text-postHomep {
   font-size: 0.7em;
 }
-.bi-globe-americas{
+.bi-globe-americas {
   font-size: 1.3em;
 }
-.name-HomePost{
+.name-HomePost {
   font-size: 1.2em;
+}
+
+.postHomeBtn {
+  text-align: left;
+  font-weight: bold;
+  background-color: transparent;
+  color: grey;
+  border-color: grey;
+}
+.postHomeBtn:hover {
+  text-align: left;
+  font-weight: bold;
+  background-color: ghostwhite;
+  color: grey;
+  border-color: grey;
 }

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Card, Container, Row, Image, ListGroup, Col } from "react-bootstrap";
+import { Card, Image, ListGroup, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfileAction } from "../redux/actions";
 
