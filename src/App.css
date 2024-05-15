@@ -80,12 +80,12 @@ h6 {
   scale: 0.8;
 }
 
-.drop{
+.drop {
   background-color: #f3f3f3;
   border: 1px solid black;
 }
 
-.drop:hover{
+.drop:hover {
   background-color: #d6d6d6;
 }
 
@@ -93,16 +93,16 @@ h6 {
   list-style-type: none;
 }
 
-.item{
+.item {
   border: none;
 }
 
-.infoIcon{
+.infoIcon {
   font-size: smaller;
 }
 
-.item:hover{
-  background-color: #F4F2EE;
+.item:hover {
+  background-color: #f4f2ee;
 }
 
 .item a {
@@ -110,18 +110,18 @@ h6 {
 }
 
 .info {
-  font-size: smaller ;
-}
-
-.headerBar{
   font-size: smaller;
 }
 
-.infoAd{
+.headerBar {
+  font-size: smaller;
+}
+
+.infoAd {
   font-size: 0.7rem;
 }
 
-.trial{
+.trial {
   border-radius: 20px;
 }
 
@@ -130,6 +130,29 @@ h6 {
   line-height: 0.7rem;
 }
 
-.copyright{
+.copyright {
   font-size: smaller;
+}
+/*FormPost */
+
+.postProfileBtn {
+  background-color: transparent;
+  color: black;
+  border: none;
+}
+.postProfileBtn:hover {
+  background-color: ghostwhite;
+  color: black;
+  border: none;
+}
+
+.postBtn {
+  background-color: transparent;
+  color: black;
+  border: none;
+}
+.postBtn:hover {
+  background-color: ghostwhite;
+  color: black;
+  border: none;
 }
