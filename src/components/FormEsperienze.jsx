@@ -2,14 +2,12 @@ import { useState } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { useSelector } from "react-redux";
 
 function FormEsperienze(props) {
   const [showInput, setShowInput] = useState(false);
   const [show, setShow] = useState(true);
   const [showInput2, setShowInput2] = useState(false);
   const [show2, setShow2] = useState(true);
-  const postExp = useSelector((state) => state.getExpereince.newExp);
 
   const [newExp, setNewExp] = useState({
     role: "",
