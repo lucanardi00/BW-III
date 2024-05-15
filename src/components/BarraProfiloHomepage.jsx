@@ -13,7 +13,7 @@ const BarraProfiloHomepage = () => {
   return (
     <Col md={2}>
       <Card className="my-2">
-        <Card.Img variant="top" src="" style={{ height: "50px" }}></Card.Img>
+        <Card.Img variant="top" src="https://static.vecteezy.com/system/resources/thumbnails/006/709/644/small/abstract-modern-tech-of-programming-code-screen-developer-free-photo.jpg" style={{ height: "50px" }}></Card.Img>
         <Card.Body className="position-relative text-center">
           <div className="position-absolute top-0 start-50 translate-middle">
             <Image
