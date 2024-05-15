@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Col } from "react-bootstrap";
 import ImageUserPostHomepage from "./ImageUserPostHomepage";
+import HomePost from "./HomePost";
 
 const PostsHome = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -44,6 +45,7 @@ const PostsHome = () => {
   }, []);
   return (
     <Col md={7}>
+      <HomePost />
       {allPosts.slice(50, 60).map((post, index) => (
         <div className="bg-white containerPostHome mb-2" key={index}>
           <div className="p-2 px-3 pb-2">
