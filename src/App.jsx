@@ -2,14 +2,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import MyNavbar from "./components/MyNavbar";
-import ProfilePage from "./components/ProfilePage";
-
+import ProfilePresentation from "./components/ProfilePresentation";
 function App() {
   return (
     <>
-      <MyNavbar query="me" />
-
-      <ProfilePage />
+    <MyNavbar query="me" />
+    <ProfilePresentation/>
     </>
   );
 }
