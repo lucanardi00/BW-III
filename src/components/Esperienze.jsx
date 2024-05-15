@@ -8,9 +8,10 @@ import FormEsperienze from "./FormEsperienze";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchExperiences } from "../redux/actions/experienceActions";
 
-function Experiences({idprofile}) {
+function Experiences({ idprofile }) {
   const dispatch = useDispatch();
   const allExperience = useSelector((state) => state.getExpereince.expereince);
+  console.log("giggione", idprofile);
   const myProfile = useSelector((state) => state.getFetch.profile);
   const isLoading = useSelector((state) => state.getExpereince.loading);
   const isError = useSelector((state) => state.getExpereince.error);

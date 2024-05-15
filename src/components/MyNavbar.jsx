@@ -39,16 +39,14 @@ function MyNavbar() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Link to={'/'} className="text-decoration-none">
-
-                  <Nav.Link
+              <Link to={"/"}>
+                <Nav.Link
                   href="#action1"
                   className="d-flex flex-column align-items-center"
-                  >
-                <i className="bi bi-house-fill"></i>Home
-              </Nav.Link>
-               
-                </Link>
+                >
+                  <i className="bi bi-house-fill"></i>Home
+                </Nav.Link>
+              </Link>
               <Nav.Link
                 href="#action2"
                 className="d-flex flex-column align-items-center"
@@ -95,11 +93,11 @@ function MyNavbar() {
                       roundedCircle
                     />
                     <div>
-                      <Link to={'/profile/me'}>
-                      <p className="m-0">
-                        {me.name} {me.surname}
-                      </p>
-                      <span>--</span>
+                      <Link to={"/profile/me"}>
+                        <p className="m-0">
+                          {me.name} {me.surname}
+                        </p>
+                        <span>--</span>
                       </Link>
                     </div>
                   </NavDropdown.Item>
@@ -108,7 +106,7 @@ function MyNavbar() {
                     className="text-align-center"
                   >
                     {" "}
-                    <Link to={`/profile/me`}>
+                    <Link to={`/profile/${me._id}`}>
                       <Button variant="outline-info" className="p-0 w-100">
                         Visualizza profilo
                       </Button>
