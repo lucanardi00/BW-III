@@ -1,12 +1,4 @@
-import {
-  Row,
-  Col,
-  Card,
-  ListGroup,
-  Container,
-  Button,
-  Image,
-} from "react-bootstrap";
+import { Col, Card, ListGroup, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAllProfileAction,
@@ -16,9 +8,6 @@ import { useEffect } from "react";
 import { fetchExperiences } from "../redux/actions/experienceActions";
 
 const SideBar = () => {
-  const ProfilesURL = "https://striveschool-api.herokuapp.com/api/profile";
-  const myKey =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQxYzAxZTE2N2U1MzAwMTVmYTY5NzciLCJpYXQiOjE3MTU1ODUwNTUsImV4cCI6MTcxNjc5NDY1NX0.oMCLB4PAEReTiWGPS97aY6U0owrc4rQySh7kmp9695Y";
   const dispatch = useDispatch();
   const allProfileData = useSelector((state) =>
     state.getFetch.allProfile.slice(0, 10)

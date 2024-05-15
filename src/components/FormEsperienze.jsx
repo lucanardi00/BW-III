@@ -2,12 +2,64 @@ import { useState } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useSelector } from "react-redux";
 
 function FormEsperienze(props) {
   const [showInput, setShowInput] = useState(false);
   const [show, setShow] = useState(true);
   const [showInput2, setShowInput2] = useState(false);
   const [show2, setShow2] = useState(true);
+  const postExp = useSelector((state) => state.getExpereince.newExp);
+
+  const [newExp, setNewExp] = useState({
+    role: "",
+    company: "",
+    startDate: "2022-06-16",
+    endDate: null,
+    description: "",
+    area: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${props.userId}/experiences`,
+        {
+          method: "POST",
+          body: JSON.stringify(newExp),
+          headers: {
+            "Content-Type": "application/json",
+
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQxYzAxZTE2N2U1MzAwMTVmYTY5NzciLCJpYXQiOjE3MTU1ODUwNTUsImV4cCI6MTcxNjc5NDY1NX0.oMCLB4PAEReTiWGPS97aY6U0owrc4rQySh7kmp9695Y`,
+          },
+        }
+      );
+      if (response.ok) {
+        setNewExp({
+          role: "",
+          company: "",
+          startDate: "",
+          endDate: "",
+          description: "",
+          area: "",
+        });
+      } else {
+        throw new Error("Failed to fetch experiences");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleFieldChange = (propertyName, propertyValue) => {
+    setNewExp({ ...newExp, [propertyName]: propertyValue });
+  };
+
+  //   const handleSubmit = (e) => {
+  //     e.preventDefault();
+  //     dispatch(fetchToPost());
 
   const toggleInput = () => {
     setShowInput(!showInput);
@@ -17,6 +69,7 @@ function FormEsperienze(props) {
     setShowInput2(!showInput2);
     setShow2(!show2);
   };
+
   return (
     <Modal
       show={props.modalShow}
@@ -31,9 +84,9 @@ function FormEsperienze(props) {
           Aggiungi esperienza
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <p>* indica che è obbligatorio</p>
-        <Form>
+      <Form onSubmit={handleSubmit}>
+        <Modal.Body>
+          <p>* indica che è obbligatorio</p>
           <Form.Group className="mb-3">
             <Form.Label className="m-0">Qualifica*</Form.Label>
             <Form.Control
@@ -42,6 +95,7 @@ function FormEsperienze(props) {
               placeholder="Esempio: Full-Stack Developer"
               required
               className="mb-3"
+              onChange={(e) => handleFieldChange("role", e.target.value)}
             />
             <Form.Label className="m-0">Tipo di impiego</Form.Label>
             <Form.Select size="sm">
@@ -65,6 +119,7 @@ function FormEsperienze(props) {
               placeholder="Esempio: Epicode"
               required
               className="mb-3"
+              onChange={(e) => handleFieldChange("company", e.target.value)}
             />
             <Form.Label className="m-0">Località</Form.Label>
             <Form.Control
@@ -72,6 +127,7 @@ function FormEsperienze(props) {
               type="text"
               placeholder="Esempio: Roma, Italia"
               className="mb-3"
+              onChange={(e) => handleFieldChange("area", e.target.value)}
             />
             <Form.Label className="m-0">Tipo di località</Form.Label>
             <Form.Select size="sm">
@@ -167,7 +223,12 @@ function FormEsperienze(props) {
               </Col>
             </Row>
             <Form.Label className="m-0">Descrizione</Form.Label>
-            <Form.Control as="textarea" rows={3} className="mb-3" />
+            <Form.Control
+              as="textarea"
+              rows={3}
+              className="mb-3"
+              onChange={(e) => handleFieldChange("description", e.target.value)}
+            />
             <Form.Label className="m-0">Sommario del profilo</Form.Label>
             <Form.Control size="sm" type="text" placeholder="--" />
             <h4 className="mb-0">Competenze</h4>
@@ -219,13 +280,13 @@ function FormEsperienze(props) {
               )}
             </div>
           </Form.Group>
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button className="rounded-pill" variant="info">
-          Close
-        </Button>
-      </Modal.Footer>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className="rounded-pill" variant="info" type="submit">
+            Salva
+          </Button>
+        </Modal.Footer>
+      </Form>
     </Modal>
   );
 }
