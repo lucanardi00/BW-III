@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Col } from "react-bootstrap";
+import HomePost from "./HomePost";
 
 const PostsHome = () => {
   const [allpost, setAllpost] = useState([]);
@@ -30,6 +31,7 @@ const PostsHome = () => {
   };
   return (
     <Col md={7}>
+      <HomePost />
       <div className="bg-white containerPostHome mb-2">
         <div className="p-3 pb-2">
           <div className="d-flex">
