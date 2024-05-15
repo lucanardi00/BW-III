@@ -8,7 +8,7 @@ import FormEsperienze from "./FormEsperienze";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchExperiences } from "../redux/actions/experienceActions";
 
-function Experiences() {
+function Experiences({idprofile}) {
   const dispatch = useDispatch();
   const allExperience = useSelector((state) => state.getExpereince.expereince);
   const myProfile = useSelector((state) => state.getFetch.profile);
@@ -38,8 +38,8 @@ function Experiences() {
   const userId = myProfile._id;
 
   useEffect(() => {
-    dispatch(fetchExperiences(userId));
-  }, [userId]);
+    dispatch(fetchExperiences(idprofile));
+  }, [idprofile]);
 
   if (isLoading) {
     return <div>Loading...</div>;

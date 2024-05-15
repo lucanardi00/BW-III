@@ -25,7 +25,7 @@ const ProfilePage = () => {
             <Risorse />
             <Profile />
             <Post />
-            <Experiences />
+            <Experiences idprofile={userId}/>
             <Studies />
             <Projects />
           </Col>

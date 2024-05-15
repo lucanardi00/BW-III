@@ -9,7 +9,7 @@ import { fetchExperiences } from "../redux/actions/experienceActions";
 import { Link, useParams } from "react-router-dom";
 
 const SideBar = () => {
-  const {} = useParams () 
+  const {} = useParams();
   const dispatch = useDispatch();
   const allProfileData = useSelector((state) =>
     state.getFetch.allProfile.slice(0, 10)
@@ -21,7 +21,6 @@ const SideBar = () => {
   const changeProfile = (personId) => {
     dispatch(fetchUserProfileAction(personId));
     dispatch(fetchExperiences(personId));
-  
   };
 
   useEffect(() => {
@@ -84,14 +83,14 @@ const SideBar = () => {
         {similarProfileData.map((person, index) => (
           <div key={index} className="d-lg-flex p-3 ">
             <div>
-            <Link to={`/profile/${person._id}`}>
-              <img
-                src={person.image}
-                alt={person.name}
-                className="rounded-circle me-2"
-                style={{ width: "45px", height: "45px" }}
+              <Link to={`/profile/${person._id}`}>
+                <img
+                  src={person.image}
+                  alt={person.name}
+                  className="rounded-circle me-2"
+                  style={{ width: "45px", height: "45px" }}
                 />
-                </Link>
+              </Link>
             </div>
             <div>
               <h5 className="m-0">{person.name}</h5>
@@ -113,14 +112,13 @@ const SideBar = () => {
             <div key={index} className="d-lg-flex p-3 ">
               <div>
                 <Link to={`/profile/${person._id}`}>
-                <img
-                
-                src={person.image}
-                alt={person.name}
-                className="rounded-circle me-2"
-                  style={{ width: "45px", height: "45px" }}
+                  <img
+                    src={person.image}
+                    alt={person.name}
+                    className="rounded-circle me-2"
+                    style={{ width: "45px", height: "45px" }}
                   />
-                  </Link>
+                </Link>
               </div>
               <div>
                 <h5 className="m-0">{person.name}</h5>
