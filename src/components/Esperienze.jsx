@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import FormEsperienze from "./FormEsperienze";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchExperiences } from "../redux/actions/experienceActions";
+import { fetchDeleteDetailsExperience } from "../redux/actions/experienceDetails";
 
 function Experiences({ idprofile }) {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ function Experiences({ idprofile }) {
     const day = ("0" + date.getDate()).slice(-2);
     return `${year}-${month}-${day}`;
   };
-
+  console.log(allExperience._id);
   const calculateMonthsWorked = (startDate, endDate) => {
     const monthsWorked = differenceInMonths(
       new Date(endDate),
@@ -41,6 +42,10 @@ function Experiences({ idprofile }) {
   useEffect(() => {
     dispatch(fetchExperiences(idprofile));
   }, [idprofile]);
+
+  const handleDelete = (e) => {
+    dispatch(fetchDeleteDetailsExperience(userId, e));
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -78,19 +83,27 @@ function Experiences({ idprofile }) {
                   />
                 </Col>
                 <Col xs={4}>
-                  <h5>{experience.company}</h5>
-                  <p>{experience.role}</p>
-                  <p>{experience.description}</p>
-                  <p className="text-secondary">
-                    {formatDate(experience.startDate)} -{" "}
-                    {formatDate(experience.endDate)} ∙{" "}
-                    {calculateMonthsWorked(
-                      experience.startDate,
-                      experience.endDate
-                    )}{" "}
-                    mesi
-                  </p>
-                  <p className="text-secondary">{experience.location}</p>
+                  <div>
+                    <h5>{experience.company}</h5>
+                    <p>{experience.role}</p>
+                    <p>{experience.description}</p>
+                    <p className="text-secondary">
+                      {formatDate(experience.startDate)} -{" "}
+                      {formatDate(experience.endDate)} ∙{" "}
+                      {calculateMonthsWorked(
+                        experience.startDate,
+                        experience.endDate
+                      )}{" "}
+                      mesi
+                    </p>
+                    <p className="text-secondary">{experience.location}</p>
+                  </div>
+                  <Button
+                    className="main-buttons"
+                    onClick={() => handleDelete(experience._id)}
+                  >
+                    <i className="bi bi-trash3"></i>
+                  </Button>
                 </Col>
               </Row>
               {index !== allExperience.length - 1 && <hr />}

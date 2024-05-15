@@ -4,6 +4,7 @@ import {
   IS_LOADING,
   POST_EXPERIENCE,
 } from "../actions/experienceActions";
+import { DELETE_DETAILS_EXPERIENCE } from "../actions/experienceDetails";
 ("GET_EXPERIENCE_ID");
 
 const initialState = {
@@ -44,6 +45,11 @@ const expereinceReduce = (state = initialState, action) => {
       return {
         ...state,
         loading: action.payload,
+      };
+    case DELETE_DETAILS_EXPERIENCE:
+      return {
+        ...state,
+        details: action.payload,
       };
     default:
       return state;
