@@ -80,15 +80,39 @@ h6 {
   scale: 0.8;
 }
 
-.drop{
+.drop {
   background-color: #f3f3f3;
   border: 1px solid black;
 }
 
-.drop:hover{
+.drop:hover {
   background-color: #d6d6d6;
 }
 
 .footer-list {
   list-style-type: none;
+}
+
+/*FormPost */
+
+.postProfileBtn {
+  background-color: transparent;
+  color: black;
+  border: none;
+}
+.postProfileBtn:hover {
+  background-color: ghostwhite;
+  color: black;
+  border: none;
+}
+
+.postBtn {
+  background-color: transparent;
+  color: black;
+  border: none;
+}
+.postBtn:hover {
+  background-color: ghostwhite;
+  color: black;
+  border: none;
 }
