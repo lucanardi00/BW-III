@@ -95,7 +95,7 @@ function MyNavbar() {
                       roundedCircle
                     />
                     <div>
-                      <Link to={'/profile/:userId'}>
+                      <Link to={'/profile/me'}>
                       <p className="m-0">
                         {me.name} {me.surname}
                       </p>
