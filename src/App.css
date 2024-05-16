@@ -225,3 +225,17 @@ h6 {
   position: relative;
   right: 30px;
 }
+h5 {
+  color: #317ecc;
+  font-size: 1em;
+}
+.bi-x {
+  font-weight: bold;
+  font-size: 25px;
+}
+.bi-linkedin {
+  color: #317ecc;
+}
+.logoLinkedinSearchWork {
+  font-size: 15px;
+}
