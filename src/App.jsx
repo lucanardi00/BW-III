@@ -5,6 +5,7 @@ import MyNavbar from "./components/MyNavbar";
 import ProfilePage from "./components/ProfilePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Homepage from "./components/Homepage";
+import JobPage from "./components/JobPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/profile/:userId" element={<ProfilePage />} />
+          <Route path="/jobs" element={<JobPage />} />
         </Routes>
       </BrowserRouter>
     </>
