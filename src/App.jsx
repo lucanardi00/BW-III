@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/profile/:userId" element={<ProfilePage />} />
-          <Route path="/job" element={<JobPage />} />
+          <Route path="/jobs" element={<JobPage />} />
         </Routes>
       </BrowserRouter>
     </>
