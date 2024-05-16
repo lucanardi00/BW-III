@@ -7,9 +7,9 @@ const JobsWorkCategory = () => {
   const params = useParams();
   const [categoryWork, setCategoryWork] = useState([]);
   const [detailsWork, setDetailsWork] = useState([]);
-  const [clickedIndex, setClickedIndex] = useState(null);
-
+  console.log(categoryWork);
   const [isLoading, setIsLoading] = useState(true);
+  const [clickedIndex, setClickedIndex] = useState(null);
   const navigate = useNavigate();
   const category = params.searchCategory;
   useEffect(() => {
@@ -72,7 +72,7 @@ const JobsWorkCategory = () => {
           <Dropdown.Item onClick={() => handleNavigate("Marketing")}>
             Marketing
           </Dropdown.Item>
-          <Dropdown.Item onClick={() => handleNavigate("Finance / Legal")}>
+          <Dropdown.Item onClick={() => handleNavigate("Finance\/Legal")}>
             Finance / Legal
           </Dropdown.Item>
           <Dropdown.Item onClick={() => handleNavigate("Customer Service")}>
@@ -94,11 +94,11 @@ const JobsWorkCategory = () => {
             ) : (
               categoryWork.data.map((work, index) => (
                 <div
-                  className={`d-flex p-2 containerDivWork${
-                    clickedIndex === index ? "bg-secondary-subtle" : ""
+                  className={`d-flex p-2 ${
+                    clickedIndex === index ? "bg-secondary-subtle rounded" : ""
                   }`}
                   key={index}
-                  onClick={() => handleJobClick(work)}
+                  onClick={() => handleJobClick(work, index)}
                 >
                   <div className="me-2">
                     <img
