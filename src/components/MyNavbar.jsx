@@ -53,7 +53,7 @@ function MyNavbar() {
               >
                 <i className="bi bi-people-fill"></i>Rete
               </Nav.Link>
-              <Link to={"/job"}>
+              <Link to={"/jobs"}>
                 <Nav.Link
                   href="#action2"
                   className="d-flex flex-column align-items-center"
