@@ -42,7 +42,7 @@ const JobSearch = () => {
     fetchAllSearchWork();
   }, [params]);
   return (
-    <Container className="mainContainer" style={{ marginTop: "100px" }}>
+    <Container style={{ marginTop: "100px" }}>
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Categorie
