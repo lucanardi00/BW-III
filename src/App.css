@@ -215,3 +215,11 @@ h6 {
 .trash:hover{
   cursor: pointer;
 }
+
+.linkside{
+  text-decoration: none;
+}
+
+.linkside:hover{
+  background-color: #F4F2EE;
+}
