@@ -6,7 +6,7 @@ import JobDetails from "./JobDetails";
 const JobSearch = () => {
   const params = useParams();
   const [allWork, setAllWork] = useState([]);
-  const [detailsWork, setDetailsWork] = useState(null);
+  const [detailsWork, setDetailsWork] = useState([]);
   console.log(detailsWork);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -128,7 +128,7 @@ const JobSearch = () => {
             )}
           </div>
         </Col>
-        <JobDetails />
+        <JobDetails work={detailsWork} />
       </Row>
     </Container>
   );
