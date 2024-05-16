@@ -3,7 +3,7 @@ import { Button, Col, Image } from "react-bootstrap";
 const JobDetails = (props) => {
   return (
     <Col md={7} className="bg-white p-2">
-      <div style={{ maxHeight: "90vh", overflowY: "auto" }}>
+      <div style={{ maxHeight: "80vh", overflowY: "auto" }}>
         <div className="d-flex">
           <div>
             <p>Azienda</p>

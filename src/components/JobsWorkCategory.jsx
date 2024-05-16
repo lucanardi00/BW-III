@@ -82,7 +82,7 @@ const JobsWorkCategory = () => {
           className="col-5 bg-white"
           style={{ marginTop: "", overflowY: "auto" }}
         >
-          <div style={{ maxHeight: "90vh", overflowY: "auto" }}>
+          <div style={{ maxHeight: "80vh", overflowY: "auto" }}>
             {isLoading ? (
               <p>Attendi il caricamento dei dati...</p>
             ) : (
