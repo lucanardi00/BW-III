@@ -1,16 +1,16 @@
 import { Button, Col, Image } from "react-bootstrap";
 
 const JobDetails = (props) => {
-  console.log(props.allWork);
-  console.log(props.data);
+  const description = props.work.description;
+  console.log(description);
   return (
     <Col md={7} className="bg-white p-2">
       <div style={{ maxHeight: "80vh", overflowY: "auto" }}>
         <div className="d-flex">
           <div>
-            <p>Azienda</p>
-            <h2>Lavoro</h2>
-            <span>Luogo</span>
+            <p>{props.work.company_name}</p>
+            <h2>{props.work.title}</h2>
+            <span>{props.work.candidate_required_location}</span>
           </div>
           <div className="ms-auto ">
             <Button className="main-buttons">
@@ -69,9 +69,14 @@ const JobDetails = (props) => {
         </Button>
         <div>
           <h2>Informazioni sull'offerta di lavoro</h2>
-          <p>Sede:</p>
-          <p>Contratto;</p>
-          <p>Ral:</p>
+          {/* <div>{props.work.description}</div> */}
+          <div
+            dangerouslySetInnerHTML={{ __html: props.work.description }}
+          ></div>
+
+          <p>Sede: Pianeta Terra</p>
+          <p>Contratto: {props.work.job_type || "da definire"}</p>
+          <p>Ral: {props.work.salary || "da definire"}</p>
           <p>
             Il presente annuncio è rivolto ad entrambi i sessi, ai sensi delle
             leggi 903/77 e 125/91, e a persone di tutte le età e tutte le
@@ -127,15 +132,15 @@ const JobDetails = (props) => {
           <h4>Informazioni sull'azienda</h4>
           <div className="d-flex">
             <div>
-              <h4>nome azienda</h4>
+              <h4>{props.work.company_name}</h4>
               <p>185 folower</p>
             </div>
             <div className="ms-auto">
               <Button variant="outline-primary rounded-pill">+ segui</Button>
             </div>
           </div>
-          <p>categoria</p>
-          <p>info</p>
+          <p>{props.work.category}</p>
+          <p>Per maggiori informazioni collegati al nostro sito</p>
         </div>
       </div>
     </Col>

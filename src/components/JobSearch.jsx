@@ -128,7 +128,7 @@ const JobSearch = () => {
             )}
           </div>
         </Col>
-        <JobDetails />
+        <JobDetails work={detailsWork} />
       </Row>
     </Container>
   );
