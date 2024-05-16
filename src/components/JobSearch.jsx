@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Container } from "react-bootstrap";
+import { Col, Container, Dropdown } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const JobSearch = () => {
@@ -41,10 +41,25 @@ const JobSearch = () => {
     fetchAllSearchWork();
   }, [params]);
   return (
-    <Container>
+    <Container style={{ marginTop: "100px" }}>
+      <Dropdown>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+          Categorie
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu style={{ height: "100px", overflowY: "auto" }}>
+          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+          <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
       <Col
         className="col-5 bg-white"
-        style={{ marginTop: "100px", overflowY: "auto" }}
+        style={{ marginTop: "", overflowY: "auto" }}
       >
         <div style={{ maxHeight: "90vh", overflowY: "auto" }}>
           {isLoading ? (
