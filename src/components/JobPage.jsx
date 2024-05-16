@@ -7,11 +7,11 @@ import JobsSidebar from "./JobsSidebar";
 function JobPage() {
   return (
     <Container className="mainContainer">
-        <Row>
-        <JobsSidebar/>
+      <Row>
+        <JobsSidebar />
         <JobsList />
         <JobRxSidebar />
-        </Row>
+      </Row>
     </Container>
   );
 }

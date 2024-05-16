@@ -212,27 +212,37 @@ h6 {
   border-color: grey;
 }
 
-.trash:hover{
+.trash:hover {
   cursor: pointer;
 }
-h5{
+
+.personMiniPic {
+  position: relative;
+  right: 15px;
+}
+
+.person2MiniPic {
+  position: relative;
+  right: 30px;
+}
+h5 {
   color: #317ecc;
   font-size: 1em;
 }
-.bi-x{
+.bi-x {
   font-weight: bold;
   font-size: 25px;
 }
-.bi-linkedin{
+.bi-linkedin {
   color: #317ecc;
 }
-.logoLinkedinSearchWork{
+.logoLinkedinSearchWork {
   font-size: 15px;
 }
-.linkside{
+.linkside {
   text-decoration: none;
 }
 
-.linkside:hover{
-  background-color: #F4F2EE;
+.linkside:hover {
+  background-color: #f4f2ee;
 }
