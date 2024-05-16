@@ -7,7 +7,8 @@ const JobsWorkCategory = () => {
   const params = useParams();
   const [categoryWork, setCategoryWork] = useState([]);
   const [detailsWork, setDetailsWork] = useState([]);
-  console.log(categoryWork);
+  const [clickedIndex, setClickedIndex] = useState(null);
+
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const category = params.searchCategory;
@@ -46,8 +47,9 @@ const JobsWorkCategory = () => {
   const handleNavigate = (category) => {
     navigate(`/jobs/category/${category}`);
   };
-  const handleJobClick = (job) => {
+  const handleJobClick = (job, index) => {
     setDetailsWork(job);
+    setClickedIndex(index);
   };
 
   return (
@@ -92,7 +94,9 @@ const JobsWorkCategory = () => {
             ) : (
               categoryWork.data.map((work, index) => (
                 <div
-                  className="d-flex p-2"
+                  className={`d-flex p-2 containerDivWork${
+                    clickedIndex === index ? "bg-secondary-subtle" : ""
+                  }`}
                   key={index}
                   onClick={() => handleJobClick(work)}
                 >

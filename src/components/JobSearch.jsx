@@ -96,7 +96,7 @@ const JobSearch = () => {
             ) : (
               allWork.data.map((work, index) => (
                 <div
-                  className={`d-flex p-2 ${
+                  className={`d-flex p-2 containerDivWork${
                     clickedIndex === index ? "bg-secondary-subtle" : ""
                   }`}
                   key={index}
