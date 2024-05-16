@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Dropdown, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import JobDetails from "./JobDetails";
@@ -7,8 +7,8 @@ const JobSearch = () => {
   const params = useParams();
   const [allWork, setAllWork] = useState([]);
   const [detailsWork, setDetailsWork] = useState(null);
-  console.log(detailsWork);
   const [isLoading, setIsLoading] = useState(true);
+  const [clickedIndex, setClickedIndex] = useState(null);
   const navigate = useNavigate();
   const work = params.searchWork;
   const randomImagePost = [
@@ -20,11 +20,14 @@ const JobSearch = () => {
     "https://t4.ftcdn.net/jpg/04/16/88/83/360_F_416888318_DCDiepJmsRw0qMQ6zhfIfC1dvlPnlxno.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2001/05/esa_logo/9173490-7-eng-GB/ESA_Logo_pillars.jpg",
   ];
+
   const handleNavigate = (category) => {
     navigate(`/jobs/category/${category}`);
   };
-  const handleJobClick = (job) => {
+
+  const handleJobClick = (job, index) => {
     setDetailsWork(job);
+    setClickedIndex(index);
   };
 
   useEffect(() => {
@@ -50,6 +53,7 @@ const JobSearch = () => {
     };
     fetchAllSearchWork();
   }, [params]);
+
   return (
     <Container style={{ marginTop: "100px" }}>
       <Dropdown>
@@ -82,19 +86,16 @@ const JobSearch = () => {
         </Dropdown.Menu>
       </Dropdown>
       <Row>
-        <Col
-          className="col-5 bg-white"
-          style={{ marginTop: "", overflowY: "auto" }}
-        >
+        <Col className="col-5 bg-white" style={{ marginTop: "", overflowY: "auto" }}>
           <div style={{ maxHeight: "80vh", overflowY: "auto" }}>
             {isLoading ? (
               <p>Attendi il caricamento dei dati...</p>
             ) : (
               allWork.data.map((work, index) => (
                 <div
-                  className="d-flex p-2"
+                  className={`d-flex p-2 ${clickedIndex === index ? 'bg-secondary-subtle' : ''}`}
                   key={index}
-                  onClick={() => handleJobClick(work)}
+                  onClick={() => handleJobClick(work, index)}
                 >
                   <div className="me-2">
                     <img
