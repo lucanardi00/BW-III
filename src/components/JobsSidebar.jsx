@@ -57,3 +57,4 @@ const JobsSidebar = () => {
     </>
   );
 };
+export default JobsSidebar
