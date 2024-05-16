@@ -1,17 +1,22 @@
 import { Button, Col, Image } from "react-bootstrap";
 
-const JobDetails = () => {
+const JobDetails = (props) => {
+  console.log(props.allWork);
   return (
-    <Col md={7}>
+    <Col md={7} className="bg-white">
       <div className="d-flex">
         <div>
           <p>Azienda</p>
           <h2>Lavoro</h2>
           <span>Luogo</span>
         </div>
-        <div>
-          <Button></Button>
-          <Button></Button>
+        <div className="ms-auto ">
+          <Button className="main-buttons">
+            <i className="bi bi-share "></i>
+          </Button>
+          <Button className="main-buttons">
+            <i className="bi bi-three-dots"></i>
+          </Button>
         </div>
       </div>
       <div className="d-flex">
@@ -54,8 +59,12 @@ const JobDetails = () => {
         <p>Vedi un confronto con altri 100 candidati. </p>
         <p>Prova Premium per 0 EUR</p>
       </div>
-      <Button></Button>
-      <Button></Button>
+      <Button variant="info" className="rounded-pill me-3">
+        <i className="bi bi-linkedin"></i> Candidatura semplice{" "}
+      </Button>
+      <Button variant="outline-info" className="rounded-pill">
+        Salva
+      </Button>
       <div>
         <h2>Informazioni sull'offerta di lavoro</h2>
         <p>Sede:</p>
@@ -105,14 +114,27 @@ const JobDetails = () => {
           <p className="m-0 ">Milioni di utenti usano Premium</p>
         </div>
         <div className="mt-2">
-          <Button>Prova Premium per 0 EUR</Button>
+          <Button className="rounded-pill">Prova Premium per 0 EUR</Button>
           <p>
             Prova gratuita di 1 mese. Ti invieremo un promemoria 7 giorni prima
             della fine del periodo di prova.
           </p>
         </div>
       </div>
-      <div className="border rounded"></div>
+      <div className="border rounded mt-3">
+        <h4>Informazioni sull'azienda</h4>
+        <div className="d-flex">
+          <div>
+            <h4>nome azienda</h4>
+            <p>185 folower</p>
+          </div>
+          <Button className="ms-auto" variant="outline-primary rounded-pill">
+            + segui
+          </Button>
+        </div>
+        <p>categoria</p>
+        <p>info</p>
+      </div>
     </Col>
   );
 };
