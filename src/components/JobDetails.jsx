@@ -1,15 +1,13 @@
 import { Button, Col, Image } from "react-bootstrap";
 
 const JobDetails = (props) => {
-  const description = props.work.description;
-  console.log(description);
   return (
     <Col md={7} className="bg-white p-2">
       <div style={{ maxHeight: "80vh", overflowY: "auto" }}>
-        <div className="d-flex">
+        <div className="d-flex mb-4">
           <div>
-            <p>{props.work.company_name}</p>
-            <h2>{props.work.title}</h2>
+            <p className="m-0 mt-3">{props.work.company_name}</p>
+            <h2 className="m-0">{props.work.title}</h2>
             <span>{props.work.candidate_required_location}</span>
           </div>
           <div className="ms-auto ">
@@ -21,7 +19,7 @@ const JobDetails = (props) => {
             </Button>
           </div>
         </div>
-        <div className="d-flex">
+        <div className="d-flex align-items-center mb-2 mt-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -34,9 +32,9 @@ const JobDetails = (props) => {
           >
             <path d="M17 6V5a3 3 0 00-3-3h-4a3 3 0 00-3 3v1H2v4a3 3 0 003 3h14a3 3 0 003-3V6zM9 5a1 1 0 011-1h4a1 1 0 011 1v1H9zm10 9a4 4 0 003-1.38V17a3 3 0 01-3 3H5a3 3 0 01-3-3v-4.38A4 4 0 005 14z"></path>
           </svg>
-          <p>In sede ∙ A tempo pieno</p>
+          <p className="m-0">In sede ∙ A tempo pieno</p>
         </div>
-        <div className="d-flex">
+        <div className="d-flex align-items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -49,22 +47,24 @@ const JobDetails = (props) => {
           >
             <path d="M4 2v20h16V2zm14 18h-4v-2h-4v2H6V4h12zm-7-8H8v-2h3zm0 4H8v-2h3zm5-4h-3v-2h3zm-5-4H8V6h3zm5 0h-3V6h3zm0 8h-3v-2h3z"></path>
           </svg>
-          <p>5-8 dipendenti</p>
+          <p className="m-0">5-8 dipendenti</p>
         </div>
-        <div className="d-flex">
+        <div className="d-flex align-items-center">
           <i className="bi bi-list-check"></i>
 
-          <p>Competenze: teamwork, coding e altre 4</p>
+          <p className="m-0">Competenze: teamwork, coding e altre 4</p>
         </div>
-        <div className="d-flex">
+        <div className="d-flex align-items-center mb-2">
           <i className="bi bi-lightbulb"></i>
-          <p>Vedi un confronto con altri 100 candidati. </p>
-          <p>Prova Premium per 0 EUR</p>
+          <div className="d-flex">
+            <p className="m-0">Vedi un confronto con altri 100 candidati. </p>
+            <p className="m-0">Prova Premium per 0 EUR</p>
+          </div>
         </div>
-        <Button variant="info" className="rounded-pill me-3">
+        <Button variant="info" className="rounded-pill me-3 mb-3">
           <i className="bi bi-linkedin"></i> Candidatura semplice{" "}
         </Button>
-        <Button variant="outline-info" className="rounded-pill">
+        <Button variant="outline-info" className="rounded-pill mb-3">
           Salva
         </Button>
         <div>
@@ -89,7 +89,7 @@ const JobDetails = (props) => {
             Accedi a informazioni esclusive sui candidati, scopri le offerte di
             lavoro per cui rientreresti fra i migliori candidati, e tanto altro
           </p>
-          <div className="d-flex ">
+          <div className="d-flex align-items-center mb-3">
             <Image
               width="32"
               src="https://media.licdn.com/media/AAUQAgE2AAgAAQAAAAAAAAhCAAAAJDBmNzFjMzUzLWFlNTAtNDRkZi1hNmZlLTljNjI0MzRlMmY4YQ.png"
@@ -121,7 +121,12 @@ const JobDetails = (props) => {
             <p className="m-0 ">Milioni di utenti usano Premium</p>
           </div>
           <div className="mt-2">
-            <Button className="rounded-pill">Prova Premium per 0 EUR</Button>
+            <Button
+              style={{ backgroundColor: "#d59236", border: "transparent" }}
+              className="rounded-pill mb-3"
+            >
+              Prova Premium per 0 EUR
+            </Button>
             <p>
               Prova gratuita di 1 mese. Ti invieremo un promemoria 7 giorni
               prima della fine del periodo di prova.
@@ -132,7 +137,7 @@ const JobDetails = (props) => {
           <h4>Informazioni sull'azienda</h4>
           <div className="d-flex">
             <div>
-              <h4>{props.work.company_name}</h4>
+              <h3>{props.work.company_name}</h3>
               <p>185 folower</p>
             </div>
             <div className="ms-auto">

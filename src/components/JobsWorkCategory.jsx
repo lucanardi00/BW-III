@@ -7,11 +7,9 @@ const JobsWorkCategory = () => {
   const params = useParams();
   const [categoryWork, setCategoryWork] = useState([]);
   const [detailsWork, setDetailsWork] = useState([]);
-  const [selectedJobBackground, setSelectedJobBackground] = useState(false);
-  console.log(detailsWork);
-  console.log(selectedJobBackground);
-
+  console.log(categoryWork);
   const [isLoading, setIsLoading] = useState(true);
+  const [clickedIndex, setClickedIndex] = useState(null);
   const navigate = useNavigate();
   const category = params.searchCategory;
   useEffect(() => {
@@ -24,6 +22,9 @@ const JobsWorkCategory = () => {
           const data = await response.json();
           setCategoryWork(data);
           setIsLoading(false);
+
+          setDetailsWork(data.data[0]);
+          setClickedIndex(0);
         } else {
           console.log("error");
           throw new Error("Errore nella ricerca dei lavori 😥");
@@ -49,9 +50,9 @@ const JobsWorkCategory = () => {
   const handleNavigate = (category) => {
     navigate(`/jobs/category/${category}`);
   };
-  const handleJobClick = (job) => {
+  const handleJobClick = (job, index) => {
     setDetailsWork(job);
-    setSelectedJobBackground(true);
+    setClickedIndex(index);
   };
 
   return (
@@ -74,7 +75,7 @@ const JobsWorkCategory = () => {
           <Dropdown.Item onClick={() => handleNavigate("Marketing")}>
             Marketing
           </Dropdown.Item>
-          <Dropdown.Item onClick={() => handleNavigate("Finance / Legal")}>
+          <Dropdown.Item onClick={() => handleNavigate("Finance/Legal")}>
             Finance / Legal
           </Dropdown.Item>
           <Dropdown.Item onClick={() => handleNavigate("Customer Service")}>
@@ -96,9 +97,11 @@ const JobsWorkCategory = () => {
             ) : (
               categoryWork.data.map((work, index) => (
                 <div
-                  className="d-flex "
+                  className={`d-flex p-2 containerAllWork ${
+                    clickedIndex === index ? "bg-secondary-subtle rounded" : ""
+                  }`}
                   key={index}
-                  onClick={() => handleJobClick(work)}
+                  onClick={() => handleJobClick(work, index)}
                 >
                   <div className="me-2">
                     <img
@@ -132,7 +135,7 @@ const JobsWorkCategory = () => {
             )}
           </div>
         </Col>
-        <JobDetails />
+        <JobDetails work={detailsWork} />
       </Row>
     </Container>
   );

@@ -7,8 +7,8 @@ const JobSearch = () => {
   const params = useParams();
   const [allWork, setAllWork] = useState([]);
   const [detailsWork, setDetailsWork] = useState([]);
-  console.log(detailsWork);
   const [isLoading, setIsLoading] = useState(true);
+  const [clickedIndex, setClickedIndex] = useState(null);
   const navigate = useNavigate();
   const work = params.searchWork;
   const randomImagePost = [
@@ -20,11 +20,14 @@ const JobSearch = () => {
     "https://t4.ftcdn.net/jpg/04/16/88/83/360_F_416888318_DCDiepJmsRw0qMQ6zhfIfC1dvlPnlxno.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2001/05/esa_logo/9173490-7-eng-GB/ESA_Logo_pillars.jpg",
   ];
+
   const handleNavigate = (category) => {
     navigate(`/jobs/category/${category}`);
   };
-  const handleJobClick = (job) => {
+
+  const handleJobClick = (job, index) => {
     setDetailsWork(job);
+    setClickedIndex(index);
   };
 
   useEffect(() => {
@@ -37,6 +40,8 @@ const JobSearch = () => {
           const data = await response.json();
           setAllWork(data);
           setIsLoading(false);
+          setDetailsWork(data.data[0]);
+          setClickedIndex(0);
         } else {
           console.log("error");
           throw new Error("Errore nella ricerca dei lavori 😥");
@@ -50,6 +55,7 @@ const JobSearch = () => {
     };
     fetchAllSearchWork();
   }, [params]);
+
   return (
     <Container style={{ marginTop: "100px" }}>
       <Dropdown>
@@ -70,7 +76,7 @@ const JobSearch = () => {
           <Dropdown.Item onClick={() => handleNavigate("Marketing")}>
             Marketing
           </Dropdown.Item>
-          <Dropdown.Item onClick={() => handleNavigate("Finance / Legal")}>
+          <Dropdown.Item onClick={() => handleNavigate("Finance")}>
             Finance / Legal
           </Dropdown.Item>
           <Dropdown.Item onClick={() => handleNavigate("Customer Service")}>
@@ -92,9 +98,11 @@ const JobSearch = () => {
             ) : (
               allWork.data.map((work, index) => (
                 <div
-                  className="d-flex p-2"
+                  className={`d-flex p-2 containerAllWork ${
+                    clickedIndex === index ? "bg-secondary-subtle rounded" : ""
+                  }`}
                   key={index}
-                  onClick={() => handleJobClick(work)}
+                  onClick={() => handleJobClick(work, index)}
                 >
                   <div className="me-2">
                     <img
