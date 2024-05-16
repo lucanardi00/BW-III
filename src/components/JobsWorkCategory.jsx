@@ -6,7 +6,11 @@ import JobDetails from "./JobDetails";
 const JobsWorkCategory = () => {
   const params = useParams();
   const [categoryWork, setCategoryWork] = useState([]);
-  console.log(categoryWork);
+  const [detailsWork, setDetailsWork] = useState([]);
+  const [selectedJobBackground, setSelectedJobBackground] = useState(false);
+  console.log(detailsWork);
+  console.log(selectedJobBackground);
+
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const category = params.searchCategory;
@@ -44,6 +48,10 @@ const JobsWorkCategory = () => {
   ];
   const handleNavigate = (category) => {
     navigate(`/jobs/category/${category}`);
+  };
+  const handleJobClick = (job) => {
+    setDetailsWork(job);
+    setSelectedJobBackground(true);
   };
 
   return (
@@ -87,7 +95,11 @@ const JobsWorkCategory = () => {
               <p>Attendi il caricamento dei dati...</p>
             ) : (
               categoryWork.data.map((work, index) => (
-                <div className="d-flex p-2" key={index}>
+                <div
+                  className="d-flex "
+                  key={index}
+                  onClick={() => handleJobClick(work)}
+                >
                   <div className="me-2">
                     <img
                       src={
