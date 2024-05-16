@@ -2,8 +2,9 @@ import { Button, Col, Image } from "react-bootstrap";
 
 const JobDetails = (props) => {
   console.log(props.allWork);
+  console.log(props.data);
   return (
-    <Col md={7} className="bg-white">
+    <Col md={7} className="bg-white p-2">
       <div className="d-flex">
         <div>
           <p>Azienda</p>
@@ -76,7 +77,7 @@ const JobDetails = (props) => {
           nazionalità, ai sensi dei decreti legislativi 215/03 e 216/03.
         </p>
       </div>
-      <div className="border rounded">
+      <div className="border rounded p-2">
         <h4>Raggiungi i tuoi obiettivi più velocemente con Premium</h4>
         <p>
           Accedi a informazioni esclusive sui candidati, scopri le offerte di
@@ -121,16 +122,16 @@ const JobDetails = (props) => {
           </p>
         </div>
       </div>
-      <div className="border rounded mt-3">
+      <div className="border rounded mt-3 p-2">
         <h4>Informazioni sull'azienda</h4>
         <div className="d-flex">
           <div>
             <h4>nome azienda</h4>
             <p>185 folower</p>
           </div>
-          <Button className="ms-auto" variant="outline-primary rounded-pill">
-            + segui
-          </Button>
+          <div className="ms-auto">
+            <Button variant="outline-primary rounded-pill">+ segui</Button>
+          </div>
         </div>
         <p>categoria</p>
         <p>info</p>
