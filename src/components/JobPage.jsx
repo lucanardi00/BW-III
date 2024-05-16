@@ -1,4 +1,3 @@
-import React from "react";
 import MyNavbar from "./MyNavbar";
 import { Container } from "react-bootstrap";
 import JobRxSidebar from "./JobRightSidebar";
@@ -6,7 +5,7 @@ import JobRxSidebar from "./JobRightSidebar";
 function JobPage() {
   return (
     <Container className="mainContainer">
-      <MyNavbar  />
+      <MyNavbar />
       <div className="container">
         <JobRxSidebar />
       </div>
