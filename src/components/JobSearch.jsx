@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Dropdown, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import JobDetails from "./JobDetails";
+import { useNavigate, useParams } from "react-router-dom";
 
 const JobSearch = () => {
   const params = useParams();
   const [allWork, setAllWork] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
   const work = params.searchWork;
   const randomImagePost = [
     "https://assets.materialup.com/uploads/161b53b4-553d-4753-91f9-eed2daa424f2/preview.png",
@@ -17,6 +17,9 @@ const JobSearch = () => {
     "https://t4.ftcdn.net/jpg/04/16/88/83/360_F_416888318_DCDiepJmsRw0qMQ6zhfIfC1dvlPnlxno.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2001/05/esa_logo/9173490-7-eng-GB/ESA_Logo_pillars.jpg",
   ];
+  const handleNavigate = (category) => {
+    navigate(`/jobs/category/${category}`);
+  };
 
   useEffect(() => {
     const fetchAllSearchWork = async () => {
@@ -49,13 +52,27 @@ const JobSearch = () => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu style={{ height: "100px", overflowY: "auto" }}>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("writing")}>
+            Scrittore
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("Data")}>
+            Data
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("Product")}>
+            Product
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("Marketing")}>
+            Marketing
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("Finance / Legal")}>
+            Finance / Legal
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("Customer Service")}>
+            Customer Service
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("Software Development")}>
+            Software Development
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <Row>
