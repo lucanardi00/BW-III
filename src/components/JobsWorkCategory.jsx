@@ -2,12 +2,36 @@ import { useEffect, useState } from "react";
 import { Col, Container, Dropdown } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 
-const JobSearch = () => {
+const JobsWorkCategory = () => {
   const params = useParams();
-  const [allWork, setAllWork] = useState([]);
+  const [categoryWork, setCategoryWork] = useState([]);
+  console.log(categoryWork);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const work = params.searchWork;
+  const category = params.searchCategory;
+  useEffect(() => {
+    const fetchAllCategoryhWork = async () => {
+      try {
+        const response = await fetch(
+          `https://strive-benchmark.herokuapp.com/api/jobs?category=${category}&limit=10 `
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setCategoryWork(data);
+          setIsLoading(false);
+        } else {
+          console.log("error");
+          throw new Error("Errore nella ricerca dei lavori 😥");
+        }
+      } catch (error) {
+        console.log(
+          "Errore nell'aggiornamento della ricerca dei lavori",
+          error
+        );
+      }
+    };
+    fetchAllCategoryhWork();
+  }, [params]);
   const randomImagePost = [
     "https://assets.materialup.com/uploads/161b53b4-553d-4753-91f9-eed2daa424f2/preview.png",
     "https://cdn.dribbble.com/users/401103/screenshots/6143465/dribble07.jpg",
@@ -21,29 +45,6 @@ const JobSearch = () => {
     navigate(`/jobs/category/${category}`);
   };
 
-  useEffect(() => {
-    const fetchAllSearchWork = async () => {
-      try {
-        const response = await fetch(
-          `https://strive-benchmark.herokuapp.com/api/jobs?search=${work}`
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setAllWork(data);
-          setIsLoading(false);
-        } else {
-          console.log("error");
-          throw new Error("Errore nella ricerca dei lavori 😥");
-        }
-      } catch (error) {
-        console.log(
-          "Errore nell'aggiornamento della ricerca dei lavori",
-          error
-        );
-      }
-    };
-    fetchAllSearchWork();
-  }, [params]);
   return (
     <Container style={{ marginTop: "100px" }}>
       <Dropdown>
@@ -83,7 +84,7 @@ const JobSearch = () => {
           {isLoading ? (
             <p>Attendi il caricamento dei dati...</p>
           ) : (
-            allWork.data.map((work, index) => (
+            categoryWork.data.map((work, index) => (
               <div className="d-flex p-2" key={index}>
                 <div className="me-2">
                   <img
@@ -121,4 +122,4 @@ const JobSearch = () => {
   );
 };
 
-export default JobSearch;
+export default JobsWorkCategory;
