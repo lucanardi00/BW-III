@@ -1,8 +1,6 @@
 import { Button, Col, Image } from "react-bootstrap";
 
 const JobDetails = (props) => {
-  console.log(props.allWork);
-  console.log(props.data);
   return (
     <Col md={7} className="bg-white p-2">
       <div style={{ maxHeight: "90vh", overflowY: "auto" }}>
