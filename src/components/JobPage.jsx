@@ -9,6 +9,7 @@ function JobPage() {
     <Container className="mainContainer">
       <MyNavbar  />
       <div className="container">
+        <JobsSidebar/>
         <JobRxSidebar />
       </div>
     </Container>
