@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Dropdown, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import JobDetails from "./JobDetails";
 
 const JobSearch = () => {
   const params = useParams();
   const [allWork, setAllWork] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
   const work = params.searchWork;
   const randomImagePost = [
     "https://assets.materialup.com/uploads/161b53b4-553d-4753-91f9-eed2daa424f2/preview.png",
@@ -17,6 +18,9 @@ const JobSearch = () => {
     "https://t4.ftcdn.net/jpg/04/16/88/83/360_F_416888318_DCDiepJmsRw0qMQ6zhfIfC1dvlPnlxno.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2001/05/esa_logo/9173490-7-eng-GB/ESA_Logo_pillars.jpg",
   ];
+  const handleNavigate = (category) => {
+    navigate(`/jobs/category/${category}`);
+  };
 
   useEffect(() => {
     const fetchAllSearchWork = async () => {
@@ -49,13 +53,27 @@ const JobSearch = () => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu style={{ height: "100px", overflowY: "auto" }}>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("writing")}>
+            Scrittore
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("Data")}>
+            Data
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("Product")}>
+            Product
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("Marketing")}>
+            Marketing
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("Finance / Legal")}>
+            Finance / Legal
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("Customer Service")}>
+            Customer Service
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleNavigate("Software Development")}>
+            Software Development
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <Row>
@@ -67,33 +85,41 @@ const JobSearch = () => {
             {isLoading ? (
               <p>Attendi il caricamento dei dati...</p>
             ) : (
-              <>
-                {allWork.data.map((work, index) => (
-                  <div className="d-flex p-2" key={index}>
-                    <div className="me-2">
-                      <img
-                        src={
-                          randomImagePost[
-                            Math.floor(Math.random() * randomImagePost.length)
-                          ]
-                        }
-                        alt=""
-                        style={{ width: "50px", height: "50px" }}
-                      />
-                    </div>
-                    <div className="container-fluid border-bottom">
-                      <div className="d-flex justify-content-between align-items-center">
-                        <h5 className="m-0">{work.title}</h5>
-                        <i className="bi bi-x"></i>
-                      </div>
-                    </div>
+              allWork.data.map((work, index) => (
+                <div className="d-flex p-2" key={index}>
+                  <div className="me-2">
+                    <img
+                      src={
+                        randomImagePost[
+                          Math.floor(Math.random() * randomImagePost.length)
+                        ]
+                      }
+                      alt=""
+                      style={{ width: "50px", height: "50px" }}
+                    />
                   </div>
-                ))}
-              </>
+                  <div className="container-fluid border-bottom">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <h5 className="m-0">{work.title}</h5>
+                      <i className="bi bi-x"></i>
+                    </div>
+                    <p className="m-0">{work.company_name}</p>
+                    <p className="mb-1">
+                      Luogo: {work.candidate_required_location}
+                    </p>
+                    <p className="d-flex mb-0 mt-2">
+                      {new Date(work.publication_date).toLocaleDateString()} ∙
+                      <i className="bi bi-linkedin logoLinkedinSearchWork d-flex align-items-center">
+                        <p className="m-0 ms-1">candidatura semplice</p>
+                      </i>
+                    </p>
+                  </div>
+                </div>
+              ))
             )}
           </div>
         </Col>
-        <JobDetails allWork={allWork} />
+        <JobDetails />
       </Row>
     </Container>
   );
