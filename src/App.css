@@ -212,6 +212,16 @@ h6 {
   border-color: grey;
 }
 
-.trash:hover{
+.trash:hover {
   cursor: pointer;
+}
+
+.personMiniPic {
+  position: relative;
+  right: 15px;
+}
+
+.person2MiniPic {
+  position: relative;
+  right: 30px;
 }
