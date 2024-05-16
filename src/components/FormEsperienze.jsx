@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { fetchExperiences } from "../redux/actions/experienceActions";
 
 function FormEsperienze(props) {
+  const dispatch = useDispatch();
   const [showInput, setShowInput] = useState(false);
   const [show, setShow] = useState(true);
   const [showInput2, setShowInput2] = useState(false);
@@ -58,6 +59,7 @@ function FormEsperienze(props) {
     } catch (error) {
       console.log(error);
     }
+    dispatch(fetchExperiences());
   };
 
   const toggleInput = () => {
