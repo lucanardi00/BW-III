@@ -1,26 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useDispatch } from "react-redux";
+import { fetchExperiences } from "../redux/actions/experienceActions";
 
 function FormEsperienze(props) {
+  const dispatch = useDispatch();
   const [showInput, setShowInput] = useState(false);
   const [show, setShow] = useState(true);
   const [showInput2, setShowInput2] = useState(false);
   const [show2, setShow2] = useState(true);
-
-  const [newExp, setNewExp] = useState({
-    role: "",
-    company: "",
-    startDate: "2022-06-16",
-    endDate: null,
-    description: "",
-    area: "",
-  });
+  const [startYear, setStartYear] = useState("");
+  const [startMonth, setStartMonth] = useState("");
+  const [endYear, setEndYear] = useState("");
+  const [endMonth, setEndMonth] = useState("");
+  const [role, setRole] = useState("");
+  const [company, setCompany] = useState("");
+  const [area, setArea] = useState("");
+  const [description, setDescriprion] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const newExp = {
+      role: `${role}`,
+      company: `${company}`,
+      startDate: `${startYear}-${startMonth}-1`,
+      endDate: `${endYear}-${endMonth}-1`,
+      description: `${description}`,
+      area: `${area}`,
+    };
     try {
       const response = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/${props.userId}/experiences`,
@@ -35,7 +45,7 @@ function FormEsperienze(props) {
         }
       );
       if (response.ok) {
-        setNewExp({
+        newExp({
           role: "",
           company: "",
           startDate: "",
@@ -49,15 +59,8 @@ function FormEsperienze(props) {
     } catch (error) {
       console.log(error);
     }
+    dispatch(fetchExperiences());
   };
-
-  const handleFieldChange = (propertyName, propertyValue) => {
-    setNewExp({ ...newExp, [propertyName]: propertyValue });
-  };
-
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     dispatch(fetchToPost());
 
   const toggleInput = () => {
     setShowInput(!showInput);
@@ -93,7 +96,7 @@ function FormEsperienze(props) {
               placeholder="Esempio: Full-Stack Developer"
               required
               className="mb-3"
-              onChange={(e) => handleFieldChange("role", e.target.value)}
+              onChange={(e) => setRole(e.target.value)}
             />
             <Form.Label className="m-0">Tipo di impiego</Form.Label>
             <Form.Select size="sm">
@@ -117,7 +120,7 @@ function FormEsperienze(props) {
               placeholder="Esempio: Epicode"
               required
               className="mb-3"
-              onChange={(e) => handleFieldChange("company", e.target.value)}
+              onChange={(e) => setCompany(e.target.value)}
             />
             <Form.Label className="m-0">Località</Form.Label>
             <Form.Control
@@ -125,7 +128,7 @@ function FormEsperienze(props) {
               type="text"
               placeholder="Esempio: Roma, Italia"
               className="mb-3"
-              onChange={(e) => handleFieldChange("area", e.target.value)}
+              onChange={(e) => setArea(e.target.value)}
             />
             <Form.Label className="m-0">Tipo di località</Form.Label>
             <Form.Select size="sm">
@@ -143,7 +146,11 @@ function FormEsperienze(props) {
             <Row>
               <Form.Label className="m-0">Data di inizio*</Form.Label>
               <Col>
-                <Form.Select size="sm" className="mb-3">
+                <Form.Select
+                  size="sm"
+                  className="mb-3"
+                  onChange={(e) => setStartMonth(e.target.value)}
+                >
                   <option>Mese</option>
                   <option value="1">Gennaio</option>
                   <option value="2">Febbraio</option>
@@ -160,30 +167,37 @@ function FormEsperienze(props) {
                 </Form.Select>
               </Col>
               <Col>
-                <Form.Select size="sm" className="mb-3">
+                <Form.Select
+                  size="sm"
+                  className="mb-3"
+                  onChange={(e) => setStartYear(e.target.value)}
+                >
                   <option>Anno</option>
-                  <option value="1">2024</option>
-                  <option value="2">2023</option>
-                  <option value="3">2022</option>
-                  <option value="4">2021</option>
-                  <option value="5">2020</option>
-                  <option value="6">2019</option>
-                  <option value="7">2018</option>
-                  <option value="8">2017</option>
-                  <option value="9">2016</option>
-                  <option value="10">2015</option>
-                  <option value="11">2014</option>
-                  <option value="12">2013</option>
-                  <option value="13">2012</option>
-                  <option value="14">2011</option>
-                  <option value="15">2010</option>
+                  <option>2024</option>
+                  <option>2023</option>
+                  <option>2022</option>
+                  <option>2021</option>
+                  <option>2020</option>
+                  <option>2019</option>
+                  <option>2018</option>
+                  <option>2017</option>
+                  <option>2016</option>
+                  <option>2015</option>
+                  <option>2014</option>
+                  <option>2013</option>
+                  <option>2012</option>
+                  <option>2011</option>
+                  <option>2010</option>
                 </Form.Select>
               </Col>
             </Row>
             <Row>
               <Form.Label className="m-0">Data di fine*</Form.Label>
               <Col>
-                <Form.Select size="sm">
+                <Form.Select
+                  size="sm"
+                  onChange={(e) => setEndMonth(e.target.value)}
+                >
                   <option>Mese</option>
                   <option value="1">Gennaio</option>
                   <option value="2">Febbraio</option>
@@ -200,23 +214,27 @@ function FormEsperienze(props) {
                 </Form.Select>
               </Col>
               <Col>
-                <Form.Select size="sm" className="mb-3">
+                <Form.Select
+                  size="sm"
+                  className="mb-3"
+                  onChange={(e) => setEndYear(e.target.value)}
+                >
                   <option>Anno</option>
-                  <option value="1">2024</option>
-                  <option value="2">2023</option>
-                  <option value="3">2022</option>
-                  <option value="4">2021</option>
-                  <option value="5">2020</option>
-                  <option value="6">2019</option>
-                  <option value="7">2018</option>
-                  <option value="8">2017</option>
-                  <option value="9">2016</option>
-                  <option value="10">2015</option>
-                  <option value="11">2014</option>
-                  <option value="12">2013</option>
-                  <option value="13">2012</option>
-                  <option value="14">2011</option>
-                  <option value="15">2010</option>
+                  <option>2024</option>
+                  <option>2023</option>
+                  <option>2022</option>
+                  <option>2021</option>
+                  <option>2020</option>
+                  <option>2019</option>
+                  <option>2018</option>
+                  <option>2017</option>
+                  <option>2016</option>
+                  <option>2015</option>
+                  <option>2014</option>
+                  <option>2013</option>
+                  <option>2012</option>
+                  <option>2011</option>
+                  <option>2010</option>
                 </Form.Select>
               </Col>
             </Row>
@@ -225,7 +243,7 @@ function FormEsperienze(props) {
               as="textarea"
               rows={3}
               className="mb-3"
-              onChange={(e) => handleFieldChange("description", e.target.value)}
+              onChange={(e) => setDescriprion(e.target.value)}
             />
             <Form.Label className="m-0">Sommario del profilo</Form.Label>
             <Form.Control size="sm" type="text" placeholder="--" />
