@@ -53,12 +53,14 @@ function MyNavbar() {
               >
                 <i className="bi bi-people-fill"></i>Rete
               </Nav.Link>
-              <Nav.Link
-                href="#action2"
-                className="d-flex flex-column align-items-center"
-              >
-                <i className="bi bi-briefcase-fill"></i> Lavoro
-              </Nav.Link>
+              <Link to={"/job"}>
+                <Nav.Link
+                  href="#action2"
+                  className="d-flex flex-column align-items-center"
+                >
+                  <i className="bi bi-briefcase-fill"></i> Lavoro
+                </Nav.Link>
+              </Link>
               <Nav.Link
                 href="#action2"
                 className="d-flex flex-column align-items-center"
