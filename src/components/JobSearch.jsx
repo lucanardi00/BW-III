@@ -6,6 +6,8 @@ import JobDetails from "./JobDetails";
 const JobSearch = () => {
   const params = useParams();
   const [allWork, setAllWork] = useState([]);
+  const [detailsWork, setDetailsWork] = useState(null);
+  console.log(detailsWork);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const work = params.searchWork;
@@ -20,6 +22,9 @@ const JobSearch = () => {
   ];
   const handleNavigate = (category) => {
     navigate(`/jobs/category/${category}`);
+  };
+  const handleJobClick = (job) => {
+    setDetailsWork(job);
   };
 
   useEffect(() => {
@@ -86,7 +91,11 @@ const JobSearch = () => {
               <p>Attendi il caricamento dei dati...</p>
             ) : (
               allWork.data.map((work, index) => (
-                <div className="d-flex p-2" key={index}>
+                <div
+                  className="d-flex p-2"
+                  key={index}
+                  onClick={() => handleJobClick(work)}
+                >
                   <div className="me-2">
                     <img
                       src={
