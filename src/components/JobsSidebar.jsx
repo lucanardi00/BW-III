@@ -22,10 +22,7 @@ const JobsSidebar = () => {
                 <i className="bi bi-list-ul"></i>
                 <span>
                   {" "}
-                  <small className="fw-semibold">
-                    {" "}
-                    Preferenze{" "}
-                  </small>
+                  <small className="fw-semibold"> Preferenze </small>
                 </span>
               </ListGroup.Item>
               <ListGroup.Item className="d-flex">
