@@ -1,11 +1,18 @@
-import { Container, Row } from "react-bootstrap";
+import MyNavbar from "./MyNavbar";
+import { Container } from "react-bootstrap";
 import JobRxSidebar from "./JobRightSidebar";
+import JobsSidebar from "./JobsSidebar";
 
-const JobPage = () => {
-  <Container className="mainContainer">
-    <Row>
-      <JobRxSidebar />;
-    </Row>
-  </Container>;
-};
+function JobPage() {
+  return (
+    <Container className="mainContainer">
+      <MyNavbar />
+      <div className="container">
+        <JobsSidebar />
+        <JobRxSidebar />
+      </div>
+    </Container>
+  );
+}
+
 export default JobPage;
