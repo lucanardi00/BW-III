@@ -9,6 +9,7 @@ const JobsWorkCategory = () => {
   const [detailsWork, setDetailsWork] = useState([]);
   console.log(categoryWork);
   const [isLoading, setIsLoading] = useState(true);
+  const [clickedIndex, setClickedIndex] = useState(null);
   const navigate = useNavigate();
   const category = params.searchCategory;
   useEffect(() => {
@@ -46,8 +47,9 @@ const JobsWorkCategory = () => {
   const handleNavigate = (category) => {
     navigate(`/jobs/category/${category}`);
   };
-  const handleJobClick = (job) => {
+  const handleJobClick = (job, index) => {
     setDetailsWork(job);
+    setClickedIndex(index);
   };
 
   return (
@@ -70,7 +72,7 @@ const JobsWorkCategory = () => {
           <Dropdown.Item onClick={() => handleNavigate("Marketing")}>
             Marketing
           </Dropdown.Item>
-          <Dropdown.Item onClick={() => handleNavigate("Finance / Legal")}>
+          <Dropdown.Item onClick={() => handleNavigate("Finance\/Legal")}>
             Finance / Legal
           </Dropdown.Item>
           <Dropdown.Item onClick={() => handleNavigate("Customer Service")}>
@@ -92,9 +94,11 @@ const JobsWorkCategory = () => {
             ) : (
               categoryWork.data.map((work, index) => (
                 <div
-                  className="d-flex p-2"
+                  className={`d-flex p-2 ${
+                    clickedIndex === index ? "bg-secondary-subtle rounded" : ""
+                  }`}
                   key={index}
-                  onClick={() => handleJobClick(work)}
+                  onClick={() => handleJobClick(work, index)}
                 >
                   <div className="me-2">
                     <img

@@ -74,7 +74,7 @@ const JobSearch = () => {
           <Dropdown.Item onClick={() => handleNavigate("Marketing")}>
             Marketing
           </Dropdown.Item>
-          <Dropdown.Item onClick={() => handleNavigate("Finance / Legal")}>
+          <Dropdown.Item onClick={() => handleNavigate("Finance")}>
             Finance / Legal
           </Dropdown.Item>
           <Dropdown.Item onClick={() => handleNavigate("Customer Service")}>
@@ -97,7 +97,7 @@ const JobSearch = () => {
               allWork.data.map((work, index) => (
                 <div
                   className={`d-flex p-2 ${
-                    clickedIndex === index ? "bg-secondary-subtle" : ""
+                    clickedIndex === index ? "bg-secondary-subtle rounded" : ""
                   }`}
                   key={index}
                   onClick={() => handleJobClick(work, index)}
