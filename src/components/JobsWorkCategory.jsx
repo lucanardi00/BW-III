@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Dropdown } from "react-bootstrap";
+import { Col, Container, Dropdown, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+import JobDetails from "./JobDetails";
 
 const JobsWorkCategory = () => {
   const params = useParams();
@@ -76,48 +77,51 @@ const JobsWorkCategory = () => {
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-      <Col
-        className="col-5 bg-white"
-        style={{ marginTop: "", overflowY: "auto" }}
-      >
-        <div style={{ maxHeight: "90vh", overflowY: "auto" }}>
-          {isLoading ? (
-            <p>Attendi il caricamento dei dati...</p>
-          ) : (
-            categoryWork.data.map((work, index) => (
-              <div className="d-flex p-2" key={index}>
-                <div className="me-2">
-                  <img
-                    src={
-                      randomImagePost[
-                        Math.floor(Math.random() * randomImagePost.length)
-                      ]
-                    }
-                    alt=""
-                    style={{ width: "50px", height: "50px" }}
-                  />
-                </div>
-                <div className="container-fluid border-bottom">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <h5 className="m-0">{work.title}</h5>
-                    <i className="bi bi-x"></i>
+      <Row>
+        <Col
+          className="col-5 bg-white"
+          style={{ marginTop: "", overflowY: "auto" }}
+        >
+          <div style={{ maxHeight: "90vh", overflowY: "auto" }}>
+            {isLoading ? (
+              <p>Attendi il caricamento dei dati...</p>
+            ) : (
+              categoryWork.data.map((work, index) => (
+                <div className="d-flex p-2" key={index}>
+                  <div className="me-2">
+                    <img
+                      src={
+                        randomImagePost[
+                          Math.floor(Math.random() * randomImagePost.length)
+                        ]
+                      }
+                      alt=""
+                      style={{ width: "50px", height: "50px" }}
+                    />
                   </div>
-                  <p className="m-0">{work.company_name}</p>
-                  <p className="mb-1">
-                    Luogo: {work.candidate_required_location}
-                  </p>
-                  <p className="d-flex mb-0 mt-2">
-                    {new Date(work.publication_date).toLocaleDateString()} ∙
-                    <i className="bi bi-linkedin logoLinkedinSearchWork d-flex align-items-center">
-                      <p className="m-0 ms-1">candidatura semplice</p>
-                    </i>
-                  </p>
+                  <div className="container-fluid border-bottom">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <h5 className="m-0">{work.title}</h5>
+                      <i className="bi bi-x"></i>
+                    </div>
+                    <p className="m-0">{work.company_name}</p>
+                    <p className="mb-1">
+                      Luogo: {work.candidate_required_location}
+                    </p>
+                    <p className="d-flex mb-0 mt-2">
+                      {new Date(work.publication_date).toLocaleDateString()} ∙
+                      <i className="bi bi-linkedin logoLinkedinSearchWork d-flex align-items-center">
+                        <p className="m-0 ms-1">candidatura semplice</p>
+                      </i>
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))
-          )}
-        </div>
-      </Col>
+              ))
+            )}
+          </div>
+        </Col>
+        <JobDetails />
+      </Row>
     </Container>
   );
 };
