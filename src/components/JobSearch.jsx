@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Container, Dropdown, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import JobDetails from "./JobDetails";
