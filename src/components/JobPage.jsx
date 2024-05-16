@@ -1,16 +1,17 @@
 import MyNavbar from "./MyNavbar";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import JobRxSidebar from "./JobRightSidebar";
+import JobsList from "./JobList";
 import JobsSidebar from "./JobsSidebar";
 
 function JobPage() {
   return (
     <Container className="mainContainer">
-      <MyNavbar />
-      <div className="container">
+        <Row>
         <JobsSidebar/>
+        <JobsList />
         <JobRxSidebar />
-      </div>
+        </Row>
     </Container>
   );
 }

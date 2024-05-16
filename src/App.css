@@ -229,3 +229,10 @@ h5{
 .logoLinkedinSearchWork{
   font-size: 15px;
 }
+.linkside{
+  text-decoration: none;
+}
+
+.linkside:hover{
+  background-color: #F4F2EE;
+}
