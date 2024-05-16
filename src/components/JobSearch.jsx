@@ -6,7 +6,7 @@ import JobDetails from "./JobDetails";
 const JobSearch = () => {
   const params = useParams();
   const [allWork, setAllWork] = useState([]);
-  const [detailsWork, setDetailsWork] = useState(null);
+  const [detailsWork, setDetailsWork] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [clickedIndex, setClickedIndex] = useState(null);
   const navigate = useNavigate();
@@ -86,14 +86,19 @@ const JobSearch = () => {
         </Dropdown.Menu>
       </Dropdown>
       <Row>
-        <Col className="col-5 bg-white" style={{ marginTop: "", overflowY: "auto" }}>
+        <Col
+          className="col-5 bg-white"
+          style={{ marginTop: "", overflowY: "auto" }}
+        >
           <div style={{ maxHeight: "80vh", overflowY: "auto" }}>
             {isLoading ? (
               <p>Attendi il caricamento dei dati...</p>
             ) : (
               allWork.data.map((work, index) => (
                 <div
-                  className={`d-flex p-2 ${clickedIndex === index ? 'bg-secondary-subtle' : ''}`}
+                  className={`d-flex p-2 ${
+                    clickedIndex === index ? "bg-secondary-subtle" : ""
+                  }`}
                   key={index}
                   onClick={() => handleJobClick(work, index)}
                 >
