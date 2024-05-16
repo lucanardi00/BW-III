@@ -22,6 +22,9 @@ const JobsWorkCategory = () => {
           const data = await response.json();
           setCategoryWork(data);
           setIsLoading(false);
+
+          setDetailsWork(data.data[0]);
+          setClickedIndex(0);
         } else {
           console.log("error");
           throw new Error("Errore nella ricerca dei lavori 😥");
@@ -72,7 +75,7 @@ const JobsWorkCategory = () => {
           <Dropdown.Item onClick={() => handleNavigate("Marketing")}>
             Marketing
           </Dropdown.Item>
-          <Dropdown.Item onClick={() => handleNavigate("Finance\/Legal")}>
+          <Dropdown.Item onClick={() => handleNavigate("Finance/Legal")}>
             Finance / Legal
           </Dropdown.Item>
           <Dropdown.Item onClick={() => handleNavigate("Customer Service")}>
