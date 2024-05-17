@@ -30,7 +30,7 @@ function Analisi() {
       </Card.Header>
       <Card.Body>
         <Row>
-          <Col xs={4}>
+          <Col xs={4} className="text-center">
             <div>
               <a href="#">
                 <h6 className="text-dark text-decoration-none">

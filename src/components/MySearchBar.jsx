@@ -26,9 +26,6 @@ const MySearchBar = () => {
         value={searchWork}
         onChange={handleChange}
       />
-      <Button variant="primary" type="submit">
-        Search
-      </Button>
     </Form>
   );
 };

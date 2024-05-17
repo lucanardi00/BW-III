@@ -29,7 +29,7 @@ const BarraProfiloHomepage = () => {
             />
           </div>
           <Card.Title className="mt-5">
-            <h4 className="text-black">
+            <h4 className="text-black namesurname">
               {myProfile.name} {myProfile.surname}
             </h4>
           </Card.Title>
@@ -37,20 +37,20 @@ const BarraProfiloHomepage = () => {
             {myProfile.title}
           </Card.Text>
           <ListGroup className="list-group-flush d-none d-md-block">
-            <ListGroup.Item className="text-secondary m-0 fw-small">
+            <ListGroup.Item className="text-secondary m-0 fw-small collegamenti">
               Collegamenti
               <span className="d-block text-black fw-small">
                 Espandi la tua rete
               </span>
             </ListGroup.Item>
-            <ListGroup.Item className="fw-small">
+            <ListGroup.Item className="fw-small collegamenti">
               Raggiungi i tuoi obiettivi con Premium
               <span className="fw-light fw-small d-block fs-6">
                 <i className="bi bi-square-half text-warning"></i> Prova Premium
                 per 0 EUR
               </span>
             </ListGroup.Item>
-            <ListGroup.Item className="fw-small">
+            <ListGroup.Item className="fw-small  collegamenti">
               <i className="bi bi-bookmark-fill text-secondary"></i> I miei
               elementi
             </ListGroup.Item>
