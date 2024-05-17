@@ -60,16 +60,7 @@ const PostsHome = () => {
             <p className="m-0">{post.text}</p>
           </div>
           <div className="text-center">
-            <img
-              src={post.image}
-              //   {
-              //     randomImagePost[
-              //       Math.floor(Math.random() * randomImagePost.length)
-              //     ]
-              //   }
-              alt=""
-              className="img-fluid"
-            />
+            <img src={post.image} alt="" className="img-fluid" />
           </div>
           <div className="p-2 ">
             <div className="d-flex align-items-center border-bottom pb-2 px-2">

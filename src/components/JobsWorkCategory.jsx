@@ -3,43 +3,26 @@ import { Col, Container, Dropdown, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import JobDetails from "./JobDetails";
 
-const JobSearch = () => {
+const JobsWorkCategory = () => {
   const params = useParams();
-  const [allWork, setAllWork] = useState([]);
+  const [categoryWork, setCategoryWork] = useState([]);
   const [detailsWork, setDetailsWork] = useState([]);
+  console.log(categoryWork);
   const [isLoading, setIsLoading] = useState(true);
   const [clickedIndex, setClickedIndex] = useState(null);
   const navigate = useNavigate();
-  const work = params.searchWork;
-  const randomImagePost = [
-    "https://assets.materialup.com/uploads/161b53b4-553d-4753-91f9-eed2daa424f2/preview.png",
-    "https://cdn.dribbble.com/users/401103/screenshots/6143465/dribble07.jpg",
-    "https://images-platform.99static.com//M5AEUhiOwxJ993lo8UM7hkXiJr8=/500x360:1000x860/fit-in/500x500/99designs-contests-attachments/101/101005/attachment_101005040",
-    "https://st.depositphotos.com/53993084/58979/v/450/depositphotos_589794618-stock-illustration-creative-letter-logo-design-letter.jpg",
-    "https://www.zilliondesigns.com/blog/wp-content/uploads/Advertising-Agency-Logo-9.jpg",
-    "https://t4.ftcdn.net/jpg/04/16/88/83/360_F_416888318_DCDiepJmsRw0qMQ6zhfIfC1dvlPnlxno.jpg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2001/05/esa_logo/9173490-7-eng-GB/ESA_Logo_pillars.jpg",
-  ];
-
-  const handleNavigate = (category) => {
-    navigate(`/jobs/category/${category}`);
-  };
-
-  const handleJobClick = (job, index) => {
-    setDetailsWork(job);
-    setClickedIndex(index);
-  };
-
+  const category = params.searchCategory;
   useEffect(() => {
-    const fetchAllSearchWork = async () => {
+    const fetchAllCategoryhWork = async () => {
       try {
         const response = await fetch(
-          `https://strive-benchmark.herokuapp.com/api/jobs?search=${work}`
+          `https://strive-benchmark.herokuapp.com/api/jobs?category=${category}&limit=10 `
         );
         if (response.ok) {
           const data = await response.json();
-          setAllWork(data);
+          setCategoryWork(data);
           setIsLoading(false);
+
           setDetailsWork(data.data[0]);
           setClickedIndex(0);
         } else {
@@ -53,8 +36,24 @@ const JobSearch = () => {
         );
       }
     };
-    fetchAllSearchWork();
+    fetchAllCategoryhWork();
   }, [params]);
+  const randomImagePost = [
+    "https://assets.materialup.com/uploads/161b53b4-553d-4753-91f9-eed2daa424f2/preview.png",
+    "https://cdn.dribbble.com/users/401103/screenshots/6143465/dribble07.jpg",
+    "https://images-platform.99static.com//M5AEUhiOwxJ993lo8UM7hkXiJr8=/500x360:1000x860/fit-in/500x500/99designs-contests-attachments/101/101005/attachment_101005040",
+    "https://st.depositphotos.com/53993084/58979/v/450/depositphotos_589794618-stock-illustration-creative-letter-logo-design-letter.jpg",
+    "https://www.zilliondesigns.com/blog/wp-content/uploads/Advertising-Agency-Logo-9.jpg",
+    "https://t4.ftcdn.net/jpg/04/16/88/83/360_F_416888318_DCDiepJmsRw0qMQ6zhfIfC1dvlPnlxno.jpg",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2001/05/esa_logo/9173490-7-eng-GB/ESA_Logo_pillars.jpg",
+  ];
+  const handleNavigate = (category) => {
+    navigate(`/jobs/category/${category}`);
+  };
+  const handleJobClick = (job, index) => {
+    setDetailsWork(job);
+    setClickedIndex(index);
+  };
 
   return (
     <Container style={{ marginTop: "100px" }}>
@@ -76,7 +75,7 @@ const JobSearch = () => {
           <Dropdown.Item onClick={() => handleNavigate("Marketing")}>
             Marketing
           </Dropdown.Item>
-          <Dropdown.Item onClick={() => handleNavigate("Finance")}>
+          <Dropdown.Item onClick={() => handleNavigate("Finance/Legal")}>
             Finance / Legal
           </Dropdown.Item>
           <Dropdown.Item onClick={() => handleNavigate("Customer Service")}>
@@ -96,7 +95,7 @@ const JobSearch = () => {
             {isLoading ? (
               <p>Attendi il caricamento dei dati...</p>
             ) : (
-              allWork.data.map((work, index) => (
+              categoryWork.data.map((work, index) => (
                 <div
                   className={`d-flex p-2 containerAllWork ${
                     clickedIndex === index ? "bg-secondary-subtle rounded" : ""
@@ -142,4 +141,4 @@ const JobSearch = () => {
   );
 };
 
-export default JobSearch;
+export default JobsWorkCategory;
