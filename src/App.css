@@ -309,7 +309,12 @@ h5 {
 .textfor {
   font-size: 0.9em;
 }
-.sticky-pic{
+.sticky-pic {
   position: sticky;
   top: 70px;
+}
+
+.comment {
+  width: 100%;
+  background-color: rgb(194, 194, 194);
 }
