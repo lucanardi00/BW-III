@@ -14,7 +14,6 @@ const ProfilePresentation = ({ idprofile }) => {
   const [myProfile, setMyProfile] = useState([]);
   const [image, setImage] = useState("");
   const [showModal, setShowModal] = useState(false);
-  console.log("AAAAAAAAAAAAH", myProfile);
 
   const handleOpenModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
