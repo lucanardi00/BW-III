@@ -97,7 +97,7 @@ const JobsWorkCategory = () => {
             ) : (
               categoryWork.data.map((work, index) => (
                 <div
-                  className={`d-flex p-2 ${
+                  className={`d-flex p-2 containerAllWork ${
                     clickedIndex === index ? "bg-secondary-subtle rounded" : ""
                   }`}
                   key={index}
