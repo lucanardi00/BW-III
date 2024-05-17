@@ -249,3 +249,36 @@ h5 {
 .containerAllWork{
   cursor: pointer;
 }
+.bi-card-image{
+  color: #317ecc;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+.bi-calendar4-event{
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #c37d16;
+}
+.bi-journal-text{
+  color: #e06847;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.homePostP{
+  font-weight: bold;
+}
+.spanBarrProfile{
+  font-size: 0.7em;
+  font-weight: bold;
+}
+.spanBarrProfilePremium{
+  font-size: 1.1em;
+}
+.greyHover:hover{
+  background-color: rgb(238, 237, 237);
+  cursor: pointer;
+}
+/* .followNavbar{
+  position: fixed;
+  top: 60px
+} */
