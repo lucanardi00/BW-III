@@ -40,6 +40,10 @@ const JobSearch = () => {
           const data = await response.json();
           setAllWork(data);
           setIsLoading(false);
+
+          setDetailsWork(data.data[0]);
+          setClickedIndex(0);
+
         } else {
           console.log("error");
           throw new Error("Errore nella ricerca dei lavori 😥");
