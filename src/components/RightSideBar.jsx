@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/no-unescaped-entities */
+import { useEffect, useState } from "react";
 import { Col, Card, ListGroup, Button, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfileAction } from "../redux/actions";
@@ -114,7 +115,7 @@ function Sidebar() {
             />
           </div>
           <div className="text-center mb-3">
-            <p>See who's viewed your profile in the last 365 days</p>
+            <p>See who s viewed your profile in the last 365 days</p>
           </div>
           <div className="text-center">
             <Button
@@ -126,28 +127,32 @@ function Sidebar() {
           </div>
         </Container>
       </Card>
-      <Row className="text-center footer">
-        <Col xs={6}>
-          <p>Informazioni</p>
-          <p>Centro Assistenza</p>
-          <p>Opzioni per gli annunci pubblicitari</p>
-          <p>Pubblicità</p>
-          <p>Scarica l'app LinkedIn</p>
-        </Col>
-        <Col xs={6}>
-          <p>Acessibilità</p>
-          <p>Privacy e condizioni</p>
-          <p>Servizi alle aziende</p>
-          <p>Altro</p>
-        </Col>
-      </Row>
-      <span className="copyright">
-        <img
-          src="https://static.licdn.com/aero-v1/sc/h/aahlc8ivbnmk0t3eyz8as5gvr"
-          alt="linkedin logo"
-        />{" "}
-        LinkedIn Corporation © 2024
-      </span>
+      <div className="followNavbar">
+        <Row className="text-center footer">
+          <Col xs={6}>
+            <p>Informazioni</p>
+            <p>Centro Assistenza</p>
+            <p>Opzioni per gli annunci pubblicitari</p>
+            <p>Pubblicità</p>
+            <p>Scarica l'app LinkedIn</p>
+          </Col>
+          <Col xs={6}>
+            <p>Acessibilità</p>
+            <p>Privacy e condizioni</p>
+            <p>Servizi alle aziende</p>
+            <p>Altro</p>
+          </Col>
+        </Row>
+        <div className="text-center">
+          <span className="copyright">
+            <img
+              src="https://static.licdn.com/aero-v1/sc/h/aahlc8ivbnmk0t3eyz8as5gvr"
+              alt="linkedin logo"
+            />{" "}
+            LinkedIn Corporation © 2024
+          </span>
+        </div>
+      </div>
     </Col>
   );
 }
