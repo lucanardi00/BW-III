@@ -27,7 +27,6 @@ function Post() {
 
   const me = user._id;
 
-
   const [myPost, setMyPost] = useState([]);
   const showMyPost = async () => {
     try {
@@ -54,7 +53,6 @@ function Post() {
   };
 
   const myFilteredPosts = myPost.filter((post) => post.user._id === me);
-
 
   const deletePost = async (postId) => {
     try {
@@ -161,43 +159,43 @@ function Post() {
           </div>
         </Card.Header>
         <Card.Body>
-        {myFilteredPosts.map((me, index) => {
-  return (
-    <React.Fragment key={index}>
-      <Row>
-        <Col>
-          <h6 className="text-muted fw-light">
-            {me.username} ha pubblicato questo post ∙ {me.createdAt}
-          </h6>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={2}>
-          <p>POST IMG</p>
-        </Col>
-        <Col xs={4}>
-          <p>{me.text}</p>
-        </Col>
-        <Col>
-          <i
-            className="bi bi-trash3 trash"
-            onClick={() => deletePost(me._id)}
-          ></i>
-          <li-icon
-            aria-hidden="true"
-            type="edit"
-            class="v-align-bottom text-secondary"
-            size="small"
-            onClick={() => handleModify(me)}
-            style={{ cursor: "pointer" }}
-          >
-            <i class="bi bi-pencil ms-4"></i>
-          </li-icon>
-        </Col>
-      </Row>
-    </React.Fragment>
-  );
-})}
+          {myFilteredPosts.map((me, index) => {
+            return (
+              <React.Fragment key={index}>
+                <Row>
+                  <Col>
+                    <h6 className="text-muted fw-light">
+                      {me.username} ha pubblicato questo post ∙ {me.createdAt}
+                    </h6>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={2}>
+                    <p>POST IMG</p>
+                  </Col>
+                  <Col xs={4}>
+                    <p>{me.text}</p>
+                  </Col>
+                  <Col>
+                    <i
+                      className="bi bi-trash3 trash"
+                      onClick={() => deletePost(me._id)}
+                    ></i>
+                    <li-icon
+                      aria-hidden="true"
+                      type="edit"
+                      class="v-align-bottom text-secondary"
+                      size="small"
+                      onClick={() => handleModify(me)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <i className="bi bi-pencil ms-4"></i>
+                    </li-icon>
+                  </Col>
+                </Row>
+              </React.Fragment>
+            );
+          })}
         </Card.Body>
         <Card.Footer className="cardfooter">
           <a
@@ -208,7 +206,10 @@ function Post() {
           </a>
         </Card.Footer>
       </Card>
-      <FormPost modalShow={showCreatePostModal} handleClose={handleCloseCreatePostModal} />
+      <FormPost
+        modalShow={showCreatePostModal}
+        handleClose={handleCloseCreatePostModal}
+      />
       {editPost && (
         <Modal show={showEditPostModal} onHide={handleCloseEditPostModal}>
           <Modal.Header closeButton>

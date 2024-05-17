@@ -40,8 +40,6 @@ const JobSearch = () => {
           const data = await response.json();
           setAllWork(data);
           setIsLoading(false);
-          setDetailsWork(data.data[0]);
-          setClickedIndex(0);
         } else {
           console.log("error");
           throw new Error("Errore nella ricerca dei lavori 😥");
@@ -76,7 +74,7 @@ const JobSearch = () => {
           <Dropdown.Item onClick={() => handleNavigate("Marketing")}>
             Marketing
           </Dropdown.Item>
-          <Dropdown.Item onClick={() => handleNavigate("Finance")}>
+          <Dropdown.Item onClick={() => handleNavigate("Finance / Legal")}>
             Finance / Legal
           </Dropdown.Item>
           <Dropdown.Item onClick={() => handleNavigate("Customer Service")}>
@@ -99,7 +97,7 @@ const JobSearch = () => {
               allWork.data.map((work, index) => (
                 <div
                   className={`d-flex p-2 ${
-                    clickedIndex === index ? "bg-secondary-subtle rounded" : ""
+                    clickedIndex === index ? "bg-secondary-subtle" : ""
                   }`}
                   key={index}
                   onClick={() => handleJobClick(work, index)}

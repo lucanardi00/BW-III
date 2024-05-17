@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Col } from "react-bootstrap";
 import ImageUserPostHomepage from "./ImageUserPostHomepage";
 import HomePost from "./HomePost";
+import PostComment from "./PostComment";
 
 const PostsHome = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -85,6 +86,7 @@ const PostsHome = () => {
                 <i className="bi bi-send-fill me-1"></i>Invia
               </Button>
             </div>
+            <PostComment postId={post._id} user={post.user} />
           </div>
         </div>
       ))}
