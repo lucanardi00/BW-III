@@ -3,8 +3,11 @@ import { Button, Col } from "react-bootstrap";
 import ImageUserPostHomepage from "./ImageUserPostHomepage";
 import HomePost from "./HomePost";
 import PostComment from "./PostComment";
+import { useDispatch } from "react-redux";
+import { fetchAllProfileAction } from "../redux/actions";
 
 const PostsHome = () => {
+  const dispatch = useDispatch();
   const [allPosts, setAllPosts] = useState([]);
 
   console.log(allPosts);
@@ -42,7 +45,7 @@ const PostsHome = () => {
         console.log("Errore nell'aggiornamento dei post", error);
       }
     };
-
+    dispatch(fetchAllProfileAction());
     fetchPosts();
   }, []);
   return (

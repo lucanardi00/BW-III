@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Form, Image } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { fetchAllProfileAction } from "../redux/actions";
 
 const PostComment = (props) => {
   const user = useSelector((state) => state.getFetch.profile);
-  const prova = useSelector((state) => state.getFetch.allProfile);
-  const dispatch = useDispatch();
+  const profiles = useSelector((state) => state.getFetch.allProfile);
+
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
 
-  console.log(props.postId);
   const singleComment = async () => {
     try {
       const response = await fetch(
@@ -26,7 +25,6 @@ const PostComment = (props) => {
         const data = await response.json();
 
         setComments(data);
-        console.log(comments);
       } else {
         console.log("error");
         throw new Error("Errore nellrecupero dei commenti 😥");
@@ -97,16 +95,7 @@ const PostComment = (props) => {
 
   useEffect(() => {
     singleComment();
-    dispatch(fetchAllProfileAction());
   }, []);
-
-  const myFilteredComments = comments.filter(
-    (comments) => comments.elementId === props.postId
-  );
-  const commentUser = prova.filter((prova) => prova.email === comments.author);
-
-  console.log("commenti filtrati", commentUser);
-  console.log(prova);
 
   return (
     <Col>
@@ -129,45 +118,47 @@ const PostComment = (props) => {
             </Form>
           </div>
         </div>
-        {myFilteredComments.map((com) => {
-          return (
-            <>
-              {commentUser.map((elem) => {
-                return (
-                  <>
-                    <div className="d-flex gap-2 mt-2">
-                      <Image
-                        src={elem.image}
-                        alt="profile-photo"
-                        className="dropPic"
-                        roundedCircle
-                      />
-                      <div className="comment border rounded p-2 ">
-                        <div className="d-flex ">
-                          <span>{elem.name}</span>
-                          <p className="m-0">• 3° e oltre</p>
-                          <p className="ms-auto m-0">58 minuti fa</p>
-                        </div>
+        {comments
+          .filter((commenti) => commenti.elementId === props.postId)
+          .map((com) => {
+            const user = profiles.find(
+              (profile) => profile.username === com.author
+            );
 
-                        <div className="d-flex">
-                          <div>
-                            <p> {com.comment} </p>
-                          </div>
-                          <Button
-                            className="main-buttons ms-auto"
-                            onClick={() => deleteComment(com._id)}
-                          >
-                            <i className="bi bi-trash3"></i>
-                          </Button>
-                        </div>
-                      </div>
+            return (
+              <>
+                <div className="d-flex gap-2 mt-2">
+                  <Image
+                    src={user.image}
+                    alt="profile-photo"
+                    className="dropPic"
+                    roundedCircle
+                  />
+                  <div className="comment border rounded p-2 ">
+                    <div className="d-flex ">
+                      <span>
+                        {user.name} {user.surname}
+                      </span>
+                      <p className="m-0">• 3° e oltre</p>
+                      <p className="ms-auto m-0">58 minuti fa</p>
                     </div>
-                  </>
-                );
-              })}
-            </>
-          );
-        })}
+
+                    <div className="d-flex">
+                      <div>
+                        <p> {com.comment} </p>
+                      </div>
+                      <Button
+                        className="main-buttons ms-auto"
+                        onClick={() => deleteComment(com._id)}
+                      >
+                        <i className="bi bi-trash3"></i>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </>
+            );
+          })}
       </div>
     </Col>
   );

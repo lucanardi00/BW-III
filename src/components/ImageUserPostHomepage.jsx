@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const ImmagineUtentePostHomepage = ({ userId }) => {
   const [utente, impostaUtente] = useState(null);
-  console.log(utente);
 
   useEffect(() => {
     const fetchImmagineUtente = async () => {
