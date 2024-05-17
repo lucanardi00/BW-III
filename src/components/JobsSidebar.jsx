@@ -1,10 +1,10 @@
-import { Col, Card, ListGroup } from "react-bootstrap";
+import { Col, Card, ListGroup, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const JobsSidebar = () => {
   return (
     <>
-      <Col md={2}>
+      <Col md={3}>
         <Card className="mt-2">
           <Card.Body className="p-1">
             <ListGroup>
@@ -49,8 +49,22 @@ const JobsSidebar = () => {
             </ListGroup>
           </Card.Body>
         </Card>
+        <Button
+              id=" Pubblica-offerta-gratuita"
+              variant="primary"
+              style={{
+                color: "#0c6dfd",
+                maxWidth: "fit-content",
+                height: "60px",
+              }}
+              className="rounded-pill d-flex bg-white fw-semibold justify-content-center align-items-center bg-transparent my-2"
+            >
+              <i className="bi bi-pencil-square text-primary fs-5 me-1"></i>
+              Pubblica offerta gratuita
+            </Button>
       </Col>
     </>
   );
 };
 export default JobsSidebar;
+
