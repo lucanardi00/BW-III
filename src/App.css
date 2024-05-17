@@ -7,6 +7,11 @@ body {
 }
 .miniPic {
   width: 30px;
+  height: 30px;
+}
+
+.search{
+  margin-right: 13rem;
 }
 
 i {
@@ -26,6 +31,7 @@ i {
 
 .dropPic {
   width: 48px;
+  height: 48px;
 }
 h6 {
   padding-inline: 16px;
@@ -40,6 +46,17 @@ h6 {
 .profile,
 .post {
   margin-bottom: 10px;
+}
+
+.namesurname:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.collegamenti:hover{
+  background-color: #F4F2EE;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .cardfooter {
