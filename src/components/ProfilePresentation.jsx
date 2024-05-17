@@ -45,7 +45,7 @@ const ProfilePresentation = ({ idprofile }) => {
       );
       if (response.ok) {
         const data = await response.json();
-        console.log("foto passata", data);
+        setImage(data);
         dispatch(fetchUserProfileAction("me"));
       } else {
         console.log("error");
