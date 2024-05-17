@@ -25,7 +25,7 @@ function MyNavbar() {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary fixed-top">
+      <Navbar expand="lg" className="bg-body-tertiary fixed-top navbar">
         <Container className="d-flex align-items-center justify-content-center">
           <div width="40%" className="d-flex search">
             <Navbar.Brand href="#">

@@ -10,8 +10,12 @@ body {
   height: 30px;
 }
 
+.navbar{
+  height: 60px;
+}
+
 .search{
-  margin-right: 13rem;
+  margin-right: 14rem;
 }
 
 i {
