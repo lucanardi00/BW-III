@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import { Button, Form, Image } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { Button, Col, Form, Image } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllProfileAction } from "../redux/actions";
 
 const PostComment = (props) => {
   const user = useSelector((state) => state.getFetch.profile);
+  const prova = useSelector((state) => state.getFetch.allProfile);
+  const dispatch = useDispatch();
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
+
   console.log(props.postId);
   const singleComment = async () => {
     try {
@@ -93,59 +97,79 @@ const PostComment = (props) => {
 
   useEffect(() => {
     singleComment();
+    dispatch(fetchAllProfileAction());
   }, []);
 
   const myFilteredComments = comments.filter(
     (comments) => comments.elementId === props.postId
   );
-  const commentId = myFilteredComments.map((elem) => elem._id);
-  console.log(commentId);
+  const commentUser = prova.filter((prova) => prova.email === comments.author);
+
+  console.log("commenti filtrati", commentUser);
+  console.log(prova);
+
   return (
-    <div>
-      <div className="d-flex gap-2 p-3">
-        <Image
-          src={user.image}
-          alt="profile-photo"
-          className="dropPic"
-          roundedCircle
-        />
-        <div>
-          <Form onSubmit={handleSubmit}>
-            <Form.Control
-              type="text"
-              placeholder="Aggiungi un commento..."
-              className="rounded-pills"
-              onChange={(e) => setComment(e.target.value)}
-            />
-          </Form>
-        </div>
-      </div>
-      {myFilteredComments.map((com) => {
-        return (
-          <>
-            <div className="d-flex gap-2">
-              <Image
-                src=""
-                alt="profile-photo"
-                className="dropPic"
-                roundedCircle
+    <Col>
+      <div>
+        <div className="d-flex gap-2 p-3 border-bottom">
+          <Image
+            src={user.image}
+            alt="profile-photo"
+            className="dropPic"
+            roundedCircle
+          />
+          <div>
+            <Form onSubmit={handleSubmit}>
+              <Form.Control
+                type="text"
+                placeholder="Aggiungi un commento..."
+                className="rounded-pills w-100"
+                onChange={(e) => setComment(e.target.value)}
               />
-              <div className="bg-secondary rounded p-2">
-                <div className="d-flex ">
-                  <span>{com.author}</span>
-                  <p className="m-0">• 3° e oltre</p>
-                  <p className="ms-auto m-0">58 minuti fa</p>
-                </div>
-                <div>
-                  <p> {com.comment} </p>
-                </div>
-                <Button onClick={() => deleteComment(com._id)} />
-              </div>
-            </div>
-          </>
-        );
-      })}
-    </div>
+            </Form>
+          </div>
+        </div>
+        {myFilteredComments.map((com) => {
+          return (
+            <>
+              {commentUser.map((elem) => {
+                return (
+                  <>
+                    <div className="d-flex gap-2 mt-2">
+                      <Image
+                        src={elem.image}
+                        alt="profile-photo"
+                        className="dropPic"
+                        roundedCircle
+                      />
+                      <div className="comment border rounded p-2 ">
+                        <div className="d-flex ">
+                          <span>{elem.name}</span>
+                          <p className="m-0">• 3° e oltre</p>
+                          <p className="ms-auto m-0">58 minuti fa</p>
+                        </div>
+
+                        <div className="d-flex">
+                          <div>
+                            <p> {com.comment} </p>
+                          </div>
+                          <Button
+                            className="main-buttons ms-auto"
+                            onClick={() => deleteComment(com._id)}
+                          >
+                            <i className="bi bi-trash3"></i>
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                );
+              })}
+            </>
+          );
+        })}
+      </div>
+    </Col>
   );
 };
 export default PostComment;
