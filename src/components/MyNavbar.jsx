@@ -25,13 +25,13 @@ function MyNavbar() {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary fixed-top navbar">
+      <Navbar expand="lg" className="bg-body-tertiary fixed-top navbar py-0">
         <Container className="d-flex align-items-center justify-content-center">
-          <div width="40%" className="d-flex search">
+          <div className="d-flex align-items-center search me-auto">
             <Navbar.Brand href="#">
               <li-icon
                 type="app-linkedin-bug-color-icon"
-                class="ivm-view-attr__icon  "
+                class="ivm-view-attr__icon  img-fluid"
                 size="large"
                 role="img"
                 aria-label="LinkedIn"
@@ -56,7 +56,7 @@ function MyNavbar() {
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
-                className="me-auto my-2 my-lg-0"
+                className="me-auto my-2 my-lg-0 align-items-center"
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
@@ -110,18 +110,21 @@ function MyNavbar() {
                   </span>
                 </Nav.Link>
                 <Dropdown>
-                  <Dropdown.Toggle
-                    className="d-flex flex-column align-items-center"
-                    id="dropdown-basic"
-                  >
+                  <div className="d-flex flex-column align-items-center">
                     <Image
                       src={me.image}
                       alt="profile-photo"
                       className="miniPic"
                       roundedCircle
+                      style={{ width: "25px", height: "25px" }}
                     />
-                    Tu
-                  </Dropdown.Toggle>
+                    <Dropdown.Toggle
+                      className="d-flex  align-items-center p-0 textfor"
+                      id="dropdown-basic"
+                    >
+                      Tu
+                    </Dropdown.Toggle>
+                  </div>
                   <DropdownMenu>
                     <NavDropdown.Item href="#action3" className="d-flex gap-3">
                       <Image
@@ -179,13 +182,16 @@ function MyNavbar() {
                 </Dropdown>
                 <div className="border-start">
                   <Dropdown>
-                    <Dropdown.Toggle
-                      onClick={handleShow}
-                      className="d-flex flex-column align-items-center"
-                      id="dropdown-basic"
-                    >
-                      <i className="bi bi-grid-3x3-gap-fill"></i> Per le aziende
-                    </Dropdown.Toggle>
+                    <div className="d-flex flex-column align-items-center">
+                      <i className="bi bi-grid-3x3-gap-fill"></i>
+                      <Dropdown.Toggle
+                        onClick={handleShow}
+                        className="d-flex  align-items-center p-0 ms-2 textfor mb-1"
+                        id="dropdown-basic"
+                      >
+                        Per le aziende
+                      </Dropdown.Toggle>
+                    </div>
                   </Dropdown>
                 </div>
                 <Nav.Link className="d-flex flex-column align-items-center premium">

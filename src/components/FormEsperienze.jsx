@@ -53,13 +53,13 @@ function FormEsperienze(props) {
           description: "",
           area: "",
         });
+        dispatch(fetchExperiences());
       } else {
         throw new Error("Failed to fetch experiences");
       }
     } catch (error) {
       console.log(error);
     }
-    dispatch(fetchExperiences());
   };
 
   const toggleInput = () => {
