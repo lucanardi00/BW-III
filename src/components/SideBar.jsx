@@ -76,10 +76,10 @@ const SideBar = () => {
         </ListGroup>
       </Card>
       <Link to={"/Jobs"}>
-            <Card className="mt-2">
-              <img src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"></img>
-            </Card>
-          </Link>
+        <Card className="mt-2">
+          <img src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"></img>
+        </Card>
+      </Link>
       <Card className="mt-2">
         <Card.Header className="bg-white color-black">
           <h5 className="mb-0">Persone che potresti conoscere</h5>
@@ -135,15 +135,15 @@ const SideBar = () => {
             </div>
           ))}
         </Card>
-          <Link to={"/Jobs"}>
+      </div>
+        <div className="sticky-pic">
+          <Link  to={"/Jobs"}>
             <Card className="mt-2">
               <img src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"></img>
             </Card>
           </Link>
-      </div>
+        </div>
     </Col>
   );
 };
 export default SideBar;
-
-
