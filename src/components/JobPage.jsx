@@ -4,6 +4,7 @@ import JobRxSidebar from "./JobRightSidebar";
 import JobsList from "./JobList";
 import JobsSidebar from "./JobsSidebar";
 
+
 function JobPage() {
   return (
     <Container className="mainContainer">

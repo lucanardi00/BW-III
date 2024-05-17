@@ -45,7 +45,7 @@ const PostsHome = () => {
     fetchPosts();
   }, []);
   return (
-    <Col md={7}>
+    <Col md={6}>
       <HomePost />
       {allPosts.slice(50, 60).map((post, index) => (
         <div className="bg-white containerPostHome mb-2" key={index}>

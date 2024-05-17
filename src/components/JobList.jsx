@@ -82,6 +82,10 @@ function JobsList() {
       </Card.Footer>
     </Card>
         <Card>
+          <Card.Header className="border-0 bg-transparent">
+          <h4>Esplora con le raccolte di offerte di lavoro</h4>
+          <p>Amplia la tua ricerca di lavoro con raccolte selezionate</p>
+          </Card.Header>
     <div className="slider-container mb-4">
         <Slider {...settings} className="ms-4 me-4">
           <div className="p-2">
@@ -89,7 +93,7 @@ function JobsList() {
               <div className="d-flex justify-content-between ">
               </div>
               <img src="https://media.licdn.com/media/AAYQAgQJAAgAAQAAAAAAAGUw8e-8bzxaRR22c5hRQ54vUA.png" alt="" className='mt-4' width={100} height={100} />
-              <a className="ancorCaourusel mt-2 " href="">
+              <a className="ancorCaourusel mt-2 text-decoration-none text-dark " href="">
               All Others
               </a>
             </div>
@@ -99,7 +103,7 @@ function JobsList() {
               <div className="d-flex justify-content-between ">
               </div>
               <img src="https://media.licdn.com/media/AAYQAgQJAAgAAQAAAAAAAE3nax2gpcxPTTGdIPhUjvp7dg.png" alt="" className='mt-4' width={100} height={100} />
-              <a className="ancorCaourusel mt-2 " href="">
+              <a className="ancorCaourusel mt-2 text-decoration-none text-dark " href="">
                 Data
               </a>
             </div>
@@ -109,7 +113,7 @@ function JobsList() {
               <div className="d-flex justify-content-between ">
               </div>
               <img src="https://media.licdn.com/media/AAYAAgQJAAgAAQAAAAAAAFC1RDG63zMHQAm-bzdsGoeLSg.png" alt="" className='mt-4' width={100} height={100} />
-              <a className="ancorCaourusel mt-2 " href="">
+              <a className="ancorCaourusel mt-2 text-decoration-none text-dark " href="">
               Product
               </a>
             </div>
@@ -119,7 +123,7 @@ function JobsList() {
               <div className="d-flex justify-content-between ">
               </div>
               <img src="https://media.licdn.com/media/AAYQAgQJAAgAAQAAAAAAAH0xQAWsoLrvTlepMrZ6WJ8YOQ.png" alt="" className='mt-4' width={100} height={100} />
-              <a className="ancorCaourusel mt-2 " href="">
+              <a className="ancorCaourusel mt-2 text-decoration-none text-dark " href="">
               Marketing
               </a>
             </div>
@@ -129,7 +133,7 @@ function JobsList() {
               <div className="d-flex justify-content-between ">
               </div>
               <img src="https://media.licdn.com/media/AAYQAgQJAAgAAQAAAAAAAEmbTAVHpVUtRweT5C8Y-1s9xQ.png.png" alt="" className='mt-4' width={100} height={100} />
-              <a className="ancorCaourusel mt-2 " href="">
+              <a className="ancorCaourusel mt-2 text-decoration-none text-dark" href="">
               Finance / Legal
               </a>
             </div>
@@ -139,7 +143,7 @@ function JobsList() {
               <div className="d-flex justify-content-between ">
               </div>
               <img src="https://media.licdn.com/media/AAYAAgQJAAgAAQAAAAAAAHQ6aN5reK1uQ5KEGefSsKiCtA.png" alt="" className='mt-4' width={100} height={100} />
-              <a className="ancorCaourusel mt-2 " href="">
+              <a className="ancorCaourusel mt-2 text-decoration-none text-dark " href="">
               Customer Service
               </a>
             </div>
@@ -149,7 +153,7 @@ function JobsList() {
               <div className="d-flex justify-content-between ">
               </div>
               <img src="https://media.licdn.com/media/AAYQAgQJAAgAAQAAAAAAAFdF4uCQPxSGRHuCilSVk4O9BQ.png" alt="" className='mt-4' width={100} height={100} />
-              <a className="ancorCaourusel mt-2 " href="">
+              <a className="ancorCaourusel mt-2 text-decoration-none text-dark" href="">
               Software Development
               </a>
             </div>

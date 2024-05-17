@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const MySearchBar = () => {
@@ -17,18 +17,15 @@ const MySearchBar = () => {
   };
 
   return (
-    <Form className="d-flex" onSubmit={handleSubmit}>
+    <Form className="d-flex" style={{ height: "35px" }} onSubmit={handleSubmit}>
       <Form.Control
         type="search"
         placeholder="Search"
-        className="me-2"
+        className="fluid"
         aria-label="Search"
         value={searchWork}
         onChange={handleChange}
       />
-      <Button variant="primary" type="submit">
-        Search
-      </Button>
     </Form>
   );
 };

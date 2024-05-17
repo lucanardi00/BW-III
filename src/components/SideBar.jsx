@@ -12,10 +12,10 @@ const SideBar = () => {
   const {} = useParams();
   const dispatch = useDispatch();
   const allProfileData = useSelector((state) =>
-    state.getFetch.allProfile.slice(0, 10)
+    state.getFetch.allProfile.slice(0, 5)
   );
   const similarProfileData = useSelector((state) =>
-    state.getFetch.allProfile.slice(10, 20)
+    state.getFetch.allProfile.slice(10, 15)
   );
 
   const changeProfile = (personId) => {
@@ -75,7 +75,7 @@ const SideBar = () => {
           </ListGroup.Item>
         </ListGroup>
       </Card>
-      <Card>
+      <Card className="mt-2">
         <Card.Header className="bg-white color-black">
           <h5 className="mb-0">Persone che potresti conoscere</h5>
           <h5> dalla tua scuola o la tua università</h5>
@@ -103,7 +103,7 @@ const SideBar = () => {
         ))}
       </Card>
       <div>
-        <Card>
+        <Card className="mt-2">
           <Card.Header className="bg-white color-black">
             <h5 className="mb-0">Persone che potresti conoscere</h5>
             <h5> dalla tua scuola o la tua università</h5>
