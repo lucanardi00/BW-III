@@ -194,8 +194,9 @@ function MyNavbar() {
                     </div>
                   </Dropdown>
                 </div>
-                <Nav.Link className="d-flex flex-column align-items-center premium">
+                <Nav.Link className="d-flex flex-column align-items-center text-center premium"> <small>
                   Da non perdere: <span> Premium per 0EUR</span>
+                  </small>
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
